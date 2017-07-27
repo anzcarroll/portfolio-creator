@@ -1,17 +1,22 @@
 //======================
 // REQUIREMENTS
 //======================
-var express = require('express');
-var router = express.Router();
-var mongoose = require('mongoose');
+const express = require('express');
+const router = express.Router({mergeParams: true}); 
+const mongoose = require('mongoose');
+
+
+
 
 //======================
 // INDEX
 //======================
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+
+router.get('/', (req, res) => {
+  console.log("Your list of projects");
+  res.send("Your list of projects is complete");
+})
 
 
 
