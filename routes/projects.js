@@ -18,6 +18,33 @@ router.get('/', (req, res) => {
   res.send("Your list of projects is complete");
 })
 
+router.get('/new', (req, res) => {
+  res.send(`You want to create a new project`);
+})
+
+router.get('/:projectId/delete', (req, res) => {
+  const projectId = req.params.projectId;
+  res.send(`You want to delete project # ${projectId}`);
+})
+
+router.get('/:projectId/edit', (req, res) => {
+  const projectId = req.params.projectId;
+  res.send(`You want to edit project # ${projectId}`);
+})
+
+router.get('/:projectId/update', (req, res) => {
+  const projectId = req.params.projectId;
+  res.send(`You want to update project # ${projectId}`);
+})
+
+router.get('/:projectId', (req, res) => {
+  const projectId = req.params.projectId
+  res.send(`Your project ID is ${projectId}`);
+})
+
+
+
+
 
 
 //======================
