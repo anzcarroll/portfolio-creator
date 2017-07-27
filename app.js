@@ -38,7 +38,7 @@ app.use('/users', usersRoute);
 
 
 app.use('/', (req, res) => {
-  res.send('portfolio creator homepage')
+  res.render('index');
 });
 
 // catch 404 and forward to error handler
