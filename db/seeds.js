@@ -4,6 +4,7 @@ mongoose.connect('mongodb://localhost/portfolio-creator');
 var User = require('../models/user');
 var Project = require('../models/project');
 var Portfolio = require('../models/portfolio');
+var Link = require('../models/link');
 
 mongoose.promise = global.Promise;
 
@@ -20,6 +21,11 @@ User.remove({}, function(err) {
 Portfolio.remove({}, function(err) {
     console.log(err);
 });
+
+Link.remove({}, (err) => {
+    console.log(err);
+
+})
 
 var ashleigh = new User({
     first_name: 'Ashleigh',
@@ -90,6 +96,27 @@ var JoeyPortfolioLinkGitHub = new Link({
     url: 'https://github.com/jchurley95',
     description: 'Link to my GitHub'
 });
+
+ashleigh.save( (err) => {
+    if (err) console.log(err);
+    console.log('Ashleigh created');
+})
+
+Joey.save( (err) => {
+    if (err) console.log(err);
+    console.log('Joey created');
+})
+
+Sean.save( (err) => {
+    if (err) console.log(err);
+    console.log('Sean created');
+})
+
+Jonathan.save( (err) => {
+    if (err) console.log(err);
+    console.log('Jonathan created');
+})
+
 
 // CONNECTION EVENTS
 db.once('open', function() {

@@ -9,7 +9,7 @@ var mongoose = require('mongoose');
 require('dotenv').config();
 
 var index = require('./routes/projects');
-var users = require('./routes/users');
+var User = require('./routes/users');
 
 var app = express();
 
@@ -40,6 +40,22 @@ app.use('/users', usersRoute);
 app.use('/', (req, res) => {
   res.render('index');
 });
+
+app.post('/', (req, res) => {
+  const newUserInfoFromForm = req.body;
+
+  User.create(newUserInfoFromForm)
+  .then((user) => {
+    console.log(user.id);
+    response.render(
+      'users/:userId', 
+      { User }
+    )
+  })
+  .catch((error) => {
+    console.log(error);
+  })
+})
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
