@@ -33,6 +33,10 @@ router.get('/:userId', (req, res) => {
     })
   })
 })
+
+router.get('/:userId/edit', (req, res) => {
+  res.send("Edit your user profile");
+})
 //======================
 // NEW
 //======================
