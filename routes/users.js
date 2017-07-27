@@ -18,7 +18,10 @@ router.get('/', (req, res) => {
   res.send("Your user data");
 })
 
-
+router.get('/:userId', (req, res) => {
+  const userId = req.params.userId
+  res.send(`Your user ID is ${userId}`)
+})
 //======================
 // NEW
 //======================
