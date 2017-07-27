@@ -5,6 +5,9 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 
+var User = require("../models/user");
+
+
 //======================
 // INDEX
 //======================
@@ -14,13 +17,21 @@ var mongoose = require('mongoose');
 // });
 
 router.get('/', (req, res) => {
+
   console.log("Your user data");
   res.send("Your user data");
 })
 
 router.get('/:userId', (req, res) => {
+
   const userId = req.params.userId
-  res.send(`Your user ID is ${userId}`)
+
+  User.findById(userId)
+  .then((user) => {
+    res.render('users/show', {
+      user: user
+    })
+  })
 })
 //======================
 // NEW
