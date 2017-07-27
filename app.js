@@ -49,9 +49,4 @@ app.use(function(err, req, res, next) {
 });
 
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 957184d65748afcdd88be9756637fe6e600b6f54
 module.exports = app;

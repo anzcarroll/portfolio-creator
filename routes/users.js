@@ -4,11 +4,6 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
-<<<<<<< HEAD
-//need to require schema
-=======
->>>>>>> 957184d65748afcdd88be9756637fe6e600b6f54
-
 
 //======================
 // INDEX
