@@ -28,10 +28,29 @@ router.get('/:projectId/delete', (req, res) => {
   res.send(`You want to delete project # ${projectId}`);
 })
 
+// router.get('/:projectId/edit', (req, res) => {
+//   const projectId = req.params.projectId;
+//   res.send(`You want to edit project # ${projectId}`);
+// })
 router.get('/:projectId/edit', (req, res) => {
+  const userId = req.params.userId;
   const projectId = req.params.projectId;
-  res.send(`You want to edit project # ${projectId}`);
-})
+  console.log("requested edit page");
+  // res.send(`Your user ID is ${userIdToSearchDbFor}`)
+
+    Project.findById(projectId)
+        .then((project) => {
+          console.log(userId);
+            res.render(
+                'projects/edit',
+                { project, 
+                  userId }
+            );
+        })
+        .catch((error) => {
+            console.log(`Error retrieving user with ID of ${userId}`)
+        });
+});
 
 router.get('/:projectId/update', (req, res) => {
   const projectId = req.params.projectId;
