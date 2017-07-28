@@ -7,6 +7,8 @@ const mongoose = require('mongoose');
 
 
 var Projects = require("../models/project")
+var User = require("../models/user");
+
 
 //======================
 // INDEX
@@ -14,11 +16,22 @@ var Projects = require("../models/project")
 
 
 router.get('/', (req, res) => {
-  console.log("Your list of projects");
-  res.send("this is index of all projects")
-  // res.render(
-  //       '/',
-  //       { Projects }
+  var userId = req.params.userId;
+  User.findById(userId)
+      .then((user) => {
+        var arrayOfProjects = user.projects;
+  
+            res.render('projects/index',
+            { user,
+            arrayOfProjects
+            }
+        )
+      });
+//   console.log(Projects);
+//   // res.send("this is index of all projects")
+//   res.render(
+//         'projects/index',
+//         { Projects }
 // );
 })
 
