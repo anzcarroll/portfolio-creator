@@ -39,8 +39,8 @@ var UserSchema = new Schema({
     gender: String,
     user_name: String, // REACH regex
     password: String,
-    portfolio: [{PortfolioSchema}],
-    projects: [{ProjectSchema}],
+    // portfolio: [{PortfolioSchema}],
+    // projects: [{ProjectSchema}],
     job_name: String
 });
 
