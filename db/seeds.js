@@ -89,43 +89,28 @@ var JoeyPortfolioLinkGitHub = new Link({
     description: 'Link to my GitHub profile'
 });
 
-// var JoeyJeopardyLinkGitHub = new Link({
-//     name: 'Joey Hurley GitHub',
-//     url: 'https://github.com/jchurley95',
-//     description: 'Link to my GitHub profile'
-// });
+var JoeyJeopardyLinkGitHub = new Link({
+    name: 'Joey Hurley GitHub',
+    url: 'https://github.com/jchurley95/Jeopardy',
+    description: 'Link to my GitHub profile'
+});
 
 var JoeyJeopardy = new Project({
     name: 'Jeopardy',
     user_name: 'TheRealDannyHurley',
     description: 'Prove you\'re smarter than your friends',
     imageUrl: '../public/img/joeyhurleyjeopardy.png',
-    links: [ 
-        {  
-            JoeyPortfolioLinkJeopardy
-        },
-        {
-            JoeyPortfolioLinkGitHub
-        }
-    ],
+    links: [JoeyPortfolioLinkJeopardy, JoeyJeopardyLinkGitHub],
     created_at: '',
     updated_at: ''
 });
 
 var JoeyPortfolio = new Portfolio({
     name: 'Joey Hurley\'s Portfolio',
-    projects:[
-        {
-            JoeyJeopardy
-        }
-    ],
+    projects: [JoeyJeopardy],
     created_at: '',
     updated_at: '',
-    links: [
-        {
-            JoeyPortfolioLinkGitHub
-        }
-    ],
+    links: [JoeyPortfolioLinkGitHub],
     user_name: 'TheRealDannyHurley'
 });
 
@@ -155,6 +140,10 @@ JoeyPortfolioLinkJeopardy.save( (err) => {
     if (err) console.log('Joey Link Jeopardy error' + err);
     console.log('Joey Jeopardy Link created');
 })
+JoeyPortfolioLinkJeopardy.save( (err) => {
+    if (err) console.log('Joey Link Jeopardy error' + err);
+    console.log('Joey Jeopardy Link created');
+})
 JoeyPortfolioLinkGitHub.save( (err) => {
     if (err) console.log('Joey Link GitHub error' + err);
     console.log('Joey GitHub Link created');
@@ -165,7 +154,7 @@ JoeyJeopardy.save( (err) => {
 })
 JoeyPortfolio.save( (err) => {
     if (err) console.log('Joey Portfolio error' + err);
-    console.log('Joey Jeopardy Portfolio created');
+    console.log('Joey Portfolio created');
 })
 Joey.save( (err) => {
     if (err) console.log('Joey user error' +err);
