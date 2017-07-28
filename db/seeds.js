@@ -1,5 +1,7 @@
+require('dotenv').config();
+
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/portfolio-creator');
+mongoose.connect(process.env.MONGODB_URI);
 
 var User = require('../models/user');
 var Project = require('../models/project');
@@ -133,7 +135,6 @@ Ashleigh.save( (err) => {
     if (err) console.log('Ashleigh user error' + err);
     console.log('Ashleigh created');
 })
-
 
 // Save Joey Links, project, portfolio, user
 JoeyPortfolioLinkJeopardy.save( (err) => {

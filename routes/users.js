@@ -5,6 +5,9 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 
+var User = require("../models/user");
+
+
 //======================
 // INDEX
 //======================
@@ -14,10 +17,10 @@ var mongoose = require('mongoose');
 // });
 
 router.get('/', (req, res) => {
+
   console.log("Your user data");
   res.send("Your user data");
 })
-
 
 //======================
 // NEW
