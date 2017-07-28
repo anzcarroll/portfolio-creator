@@ -41,6 +41,15 @@ router.get('/:projectId/update', (req, res) => {
 //   const projectId = req.params.projectId
 //   res.send(`Your project ID is ${projectId}`);
 // })
+
+//======================
+// NEW
+//======================
+
+router.get('/new', (req, res) => {
+  res.render(`projects/new`);
+})
+
 router.get('/:projectId', (req, res) => {
   const userId = req.params.userId;
   const projectId = req.params.projectId;
@@ -59,15 +68,6 @@ router.get('/:projectId', (req, res) => {
             console.log(`Error retrieving user with ID of ${userId}`)
         });
 });
-
-
-//======================
-// NEW
-//======================
-
-router.get('/new', (req, res) => {
-  res.send(`You want to create a new project`);
-})
 
 
 
