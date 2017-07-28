@@ -125,12 +125,10 @@ router.get('/', (req, res) => {
   var userId = req.params.userId;
   User.findById(userId)
       .then((user) => {
-        console.log(`User object: ${user}`)
         var arrayOfProjects = user.projects;
-        console.log(`Array of Objects ${arrayOfProjects}`);
         // console.log(arrayOfProjects);
         res.render('projects/index', {
-          userId: userId,
+          userId,
           user,
           arrayOfProjects,
         })
