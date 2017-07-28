@@ -4,44 +4,50 @@ var Schema = mongoose.Schema;
 // Use native promises
 mongoose.Promise = global.Promise;
 
-var PortfolioSchema = new Schema({
-    name: String,
-    projects: [],
-    created_at: Date,
-    updated_at: Date,
-    links: [],
-    user_name: String
-})
-
 var LinkSchema = new Schema({
     url: String,
     description: String
 });
+
 
 var ProjectSchema = new Schema({
     name: String,
     user_name: String,
     description: String,
     imageUrl: String,
-    links: [],
+    links: [{LinkSchema}],
     created_at: Date,
     updated_at: Date
 });
 
+var PortfolioSchema = new Schema({
+    name: String,
+    projects: [{ProjectSchema}],
+    created_at: Date,
+    updated_at: Date,
+    links: [{LinkSchema}],
+    user_name: String
+})
+
 var UserSchema = new Schema({
     first_name: String,
     last_name: String,
-    email: {type: String , required: true, unique: true}, // REACH add regex
+    email: String, //{type: String , required: true, unique: true}, // REACH add regex
     created_at: Date,
     updated_at: Date,
     age: Number,
     gender: String,
     user_name: String, // REACH regex
     password: String,
-    portfolio: String,
-    projects: [],
+    // portfolio: [{PortfolioSchema}],
+    // projects: [{ProjectSchema}],
     job_name: String
 });
+
+// Example query found online
+// User.find({}).populate('projects').run(function(err, users) {
+    // do something
+// });
 
 UserSchema.pre('save', function(next){
   now = new Date();
