@@ -102,10 +102,39 @@ router.get('/:projectId/edit', (req, res) => {
 // UPDATE
 //======================
 
-router.get('/:projectId/update', (req, res) => {
+router.put('/:projectId', (req, res) => {
   const projectId = req.params.projectId;
-  res.send(`You want to update project # ${projectId}`);
-})
+  const userId = req.params.userId;
+  var arrayOfProjects = [];
+ User.findById(userId).then((user) => {
+    const foundProject = user.projects.find((project) => {
+      return project.id === projectId;
+    });
+    arrayOfProjects = user.projects;
+    foundProject.name = req.body.name;
+
+    // then save the user and return the promise so we can chain
+    // another .then() block and only use one .catch() block
+    return user.save();
+
+  }).then((user) => {
+    console.log(`updated user with ID of ${user._id}`);
+
+    res.render(
+        'projects/index',
+        {
+         userId: user._id,
+          user,
+          arrayOfProjects
+        },
+    );
+  }).catch((error) => {
+    console.log(`Failed to update project with ID of ${projectId}`);
+    console.log(error);
+  });
+});
+
+
 
 
 //======================

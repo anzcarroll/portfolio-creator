@@ -5,6 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var methodOverride = require('method-override');
+
 require('dotenv').config();
 
 mongoose.connect(process.env.MONGODB_URI);
@@ -15,6 +17,7 @@ var User = require('./routes/users');
 
 var app = express();
 
+app.use(methodOverride ('_method'));
 // mongoose.connect('mongodb://localhost/portfolio-creator');
 
 // view engine setup
@@ -26,7 +29,7 @@ app.set('view engine', 'hbs');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
