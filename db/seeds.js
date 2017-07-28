@@ -51,7 +51,7 @@ var Joey = new User({
     gender: 'M',
     user_name: 'TheRealDannyHurley',
     password: 'badasskittens',
-    portfolio: 'Joey Hurley Portfolio',
+    portfolio: JoeyPortfolio,
     job_name: "Web Developer"
 });
 
@@ -84,36 +84,90 @@ var Jonathan = new User({
 });
 
 var JoeyPortfolio = new Portfolio({
-    name: '',
-    projects: '',
+    name: 'Joey Hurley\'s Portfolio',
+    projects: [
+        {JoeyJeopardy}
+        ],
     created_at: '',
     updated_at: '',
-    links: '',
-    user_name: ''
+    links: [
+        {
+            name: 'Joey Hurley GitHub',
+            url: 'https://github.com/jchurley95',
+            description: 'Link to my GitHub'
+        }
+    ],
+    user_name: 'TheRealDannyHurley'
+});
+
+var JoeyJeopardy = new Project({
+    name: 'Jeopardy',
+    user_name: 'TheRealDannyHurley',
+    description: 'Prove you\'re smarter than your friends',
+    imageUrl: '../public/img/joeyhurleyjeopardy.png',
+    links: [
+        {
+            JoeyPortfolioLinkJeopardy
+        },
+        {
+            name: 'Joey Hurley Jeopardy GitHub', 
+            url: 'https://github.com/jchurley95/Jeopardy', 
+            description: 'Link to my Jeopardy Game Git Hub From Project 1'
+        }
+    ],
+    created_at: '',
+    updated_at: ''
 });
 
 var JoeyPortfolioLinkGitHub = new Link({
+    name: 'Joey Hurley GitHub',
     url: 'https://github.com/jchurley95',
-    description: 'Link to my GitHub'
+    description: 'Link to my GitHub profile'
 });
 
+var JoeyPortfolioLinkJeopardy = new Link({
+    name: 'Joey Hurley Jeopardy',
+    url: 'https://jeoparty.bitballoon.com',
+    description: 'Link to my Jeopardy Game From Project 1'
+});
+
+// Save Ashleigh
 ashleigh.save( (err) => {
-    if (err) console.log(err);
+    if (err) console.log('Ashleigh user error' + err);
     console.log('Ashleigh created');
 })
 
+// Save Joey Links, project, portfolio, user
+JoeyPortfolioLinkJeopardy.save( (err) => {
+    if (err) console.log('Joey Link Jeopardy error' + err);
+    console.log('Joey Jeopardy Link created');
+})
+JoeyPortfolioLinkGitHub.save( (err) => {
+    if (err) console.log('Joey Link GitHub error' + err);
+    console.log('Joey GitHub Link created');
+})
+JoeyJeopardy.save( (err) => {
+    if (err) console.log('Joey Jeopardy Project error' + err);
+    console.log('Joey Jeopardy Project created');
+})
+JoeyPortfolio.save( (err) => {
+    if (err) console.log('Joey Portfolio error' + err);
+    console.log('Joey Jeopardy Project created');
+})
 Joey.save( (err) => {
-    if (err) console.log(err);
-    console.log('Joey created');
+    if (err) console.log('Joey user error' +err);
+    console.log('Joey user created');
 })
 
+// Save Sean
 Sean.save( (err) => {
-    if (err) console.log(err);
+    if (err) console.log('Sean user ' + err);
     console.log('Sean created');
 })
 
+// Save Jonathan
 Jonathan.save( (err) => {
-    if (err) console.log(err);
+    if (err) console.log('Jonathan user ' + err);
     console.log('Jonathan created');
 })
 
