@@ -15,7 +15,7 @@ var ProjectSchema = new Schema({
     user_name: String,
     description: String,
     imageUrl: String,
-    links: [{LinkSchema}],
+    links: [LinkSchema],
     created_at: Date,
     updated_at: Date
 });
@@ -25,7 +25,7 @@ var PortfolioSchema = new Schema({
     projects: [{ProjectSchema}],
     created_at: Date,
     updated_at: Date,
-    links: [{LinkSchema}],
+    links: [LinkSchema],
     user_name: String
 })
 
@@ -39,8 +39,8 @@ var UserSchema = new Schema({
     gender: String,
     user_name: String, // REACH regex
     password: String,
-    portfolio: [{PortfolioSchema}],
-    projects: [{ProjectSchema}],
+    portfolio: [PortfolioSchema],
+    projects: [ProjectSchema],
     job_name: String
 });
 
