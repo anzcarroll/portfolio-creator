@@ -127,6 +127,7 @@ var Joey = new User({
     user_name: 'TheRealDannyHurley',
     password: 'badasskittens',
     portfolio: JoeyPortfolio,
+    projects: [JoeyJeopardy],
     job_name: "Web Developer"
 });
 
