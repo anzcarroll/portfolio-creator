@@ -4,29 +4,30 @@ var Schema = mongoose.Schema;
 // Use native promises
 mongoose.Promise = global.Promise;
 
-var PortfolioSchema = new Schema({
-    name: String,
-    projects: [ProjectSchema],
-    created_at: Date,
-    updated_at: Date,
-    links: [{type: Schema.ObjectId, ref: 'LinkSchema'}],
-    user_name: String
-})
-
 var LinkSchema = new Schema({
     url: String,
     description: String
 });
+
 
 var ProjectSchema = new Schema({
     name: String,
     user_name: String,
     description: String,
     imageUrl: String,
-    links: [{type: Schema.ObjectId, ref: 'LinkSchema'}],
+    links: [{LinkSchema}],
     created_at: Date,
     updated_at: Date
 });
+
+var PortfolioSchema = new Schema({
+    name: String,
+    projects: [{ProjectSchema}],
+    created_at: Date,
+    updated_at: Date,
+    links: [{LinkSchema}],
+    user_name: String
+})
 
 var UserSchema = new Schema({
     first_name: String,
@@ -38,8 +39,8 @@ var UserSchema = new Schema({
     gender: String,
     user_name: String, // REACH regex
     password: String,
-    portfolio: [{type: Schema.ObjectId, ref: 'PortfolioSchema'}],
-    projects: [{type: Schema.ObjectId, ref: 'ProjectSchema'}],
+    portfolio: [{PortfolioSchema}],
+    projects: [{ProjectSchema}],
     job_name: String
 });
 
