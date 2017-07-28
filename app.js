@@ -28,34 +28,44 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-
 const projectsRoute = require('./routes/projects.js');
 app.use('/users/:userId/projects', projectsRoute);
 
 const usersRoute = require('./routes/users.js');
 app.use('/users', usersRoute);
 
+const indexRoute = require('./routes/index.js');
+app.use('/', indexRoute);
 
-app.use('/', (req, res) => {
-  res.render('index');
-});
 
-app.post('/', (req, res) => {
-  const newUserInfoFromForm = req.body;
 
-  User.create(newUserInfoFromForm)
-  .then((user) => {
-    console.log(user.id);
-    response.render(
-      'users/:userId', 
-      { User }
-    )
-  })
-  .catch((error) => {
-    console.log(error);
-  })
-})
+
+
+
+
+// app.get('/', (req, res) => {
+//     res.render('users/:id/new');
+// });
+
+
+
+
+
+
+// app.post('/', function(req, res){
+//      var u = new User({
+//         email: req.body.email,
+//         password: req.body.password
+//     });
+
+//     u.save(function(err) {
+//         if (err)
+//            throw err;
+//         else 
+//            console.log('save user successfully...');
+//     });
+// });
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
