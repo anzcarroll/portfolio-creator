@@ -1,4 +1,7 @@
-<h1>Edit Projects Page</h1>
+<h1>Edit {{userName}}'s Projects Page</h1>
 
-<form action=""></form>
+<form action="/users/{{projectId}}/items/{{project.id}}?_method=PUT" method="POST">
+    <input type="text" value="{{project.name}}" name="name">
+    <input type="submit" value="Update Project">
+</form>
 

@@ -1,8 +1,8 @@
-<h1>My Projects:</h1>
-<div id="list">
-    <ol>
-        {{#each projects}}
-            <li>{{this}}</li>
-        {{/each}}
-    </ol>
+<h1>{{userName}}'s Projects:</h1>
+<div id="my-projects-list">
+
+    {{#each projects}}
+       <div class="my-project">{{this.name}} <a href="/users/{{../userId}}/items/{{this.id}}">Show Project</a></div>
+    {{/each}}
+
 </div>
