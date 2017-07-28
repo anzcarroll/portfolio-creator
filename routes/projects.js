@@ -112,9 +112,31 @@ router.get('/:projectId/update', (req, res) => {
 // DELETE
 //======================
 router.get('/:projectId/delete', (req, res) => {
+  const userId = req.params.userId;
   const projectId = req.params.projectId;
-  res.send(`You want to delete project # ${projectId}`);
-})
+  var arrayOfProjects = [];
+  User.findById(userId)
+    .then((user) => {
+      arrayOfProjects = user.projects;
+      
+      user.projects.id(projectId).remove();
+      
+      return user.save();
+    })
+    .then((user) => {
+      res.render(
+        'projects/index',
+        {
+          userId: user._id,
+          user,
+          arrayOfProjects
+        },
+    );
+  }).catch((error) => {
+    console.log(`Failed to delete user with ID of ${userId}`);
+    console.log(error);
+  });
+});
 
 //======================
 // INDEX
