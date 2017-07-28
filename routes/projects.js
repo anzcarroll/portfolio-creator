@@ -6,7 +6,8 @@ const router = express.Router({mergeParams: true});
 const mongoose = require('mongoose');
 
 
-
+var User = require("../models/user");
+var Project = require("../models/project");
 
 //======================
 // INDEX
@@ -37,10 +38,29 @@ router.get('/:projectId/update', (req, res) => {
   res.send(`You want to update project # ${projectId}`);
 })
 
+// router.get('/:projectId', (req, res) => {
+//   const projectId = req.params.projectId
+//   res.send(`Your project ID is ${projectId}`);
+// })
 router.get('/:projectId', (req, res) => {
-  const projectId = req.params.projectId
-  res.send(`Your project ID is ${projectId}`);
-})
+  const userId = req.params.userId;
+  const projectId = req.params.projectId;
+  // res.send(`Your user ID is ${userIdToSearchDbFor}`)
+
+    Project.findById(projectId)
+        .then((project) => {
+          console.log(userId);
+            res.render(
+                'projects/show',
+                { project, 
+                  userId }
+            );
+        })
+        .catch((error) => {
+            console.log(`Error retrieving user with ID of ${userId}`)
+        });
+});
+
 
 
 
