@@ -6,7 +6,7 @@ const router = express.Router({mergeParams: true});
 const mongoose = require('mongoose');
 
 
-var Projects = require("../models/project")
+var Project = require("../models/project")
 var User = require("../models/user");
 
 
@@ -20,12 +20,17 @@ router.get('/', (req, res) => {
   User.findById(userId)
       .then((user) => {
         var arrayOfProjects = user.projects;
-  
-            res.render('projects/index',
-            { user,
-            arrayOfProjects
-            }
-        )
+        var projectId = arrayOfProjects[0];
+        Project.findById(projectId)
+        .then((project) => {
+          res.render('projects/index', {
+            userId: userId,
+            user,
+            arrayOfProjects,
+            project
+          })
+
+        })
       });
 //   console.log(Projects);
 //   // res.send("this is index of all projects")
