@@ -9,7 +9,6 @@ var LinkSchema = new Schema({
     description: String
 });
 
-
 var ProjectSchema = new Schema({
     name: String,
     user_name: String,
