@@ -6,10 +6,10 @@ mongoose.Promise = global.Promise;
 
 var PortfolioSchema = new Schema({
     name: String,
-    projects: [],
+    projects: [ProjectSchema],
     created_at: Date,
     updated_at: Date,
-    links: [],
+    links: [{type: Schema.ObjectId, ref: 'LinkSchema'}],
     user_name: String
 })
 
@@ -23,7 +23,7 @@ var ProjectSchema = new Schema({
     user_name: String,
     description: String,
     imageUrl: String,
-    links: [],
+    links: [{type: Schema.ObjectId, ref: 'LinkSchema'}],
     created_at: Date,
     updated_at: Date
 });
@@ -38,10 +38,15 @@ var UserSchema = new Schema({
     gender: String,
     user_name: String, // REACH regex
     password: String,
-    portfolio: String,
-    projects: [],
+    portfolio: [{type: Schema.ObjectId, ref: 'PortfolioSchema'}],
+    projects: [{type: Schema.ObjectId, ref: 'ProjectSchema'}],
     job_name: String
 });
+
+// Example query found online
+// User.find({}).populate('projects').run(function(err, users) {
+    // do something
+// });
 
 UserSchema.pre('save', function(next){
   now = new Date();
