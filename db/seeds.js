@@ -84,6 +84,18 @@ var Jonathan = new User({
     job_name: "Web Developer"
 });
 
+var JoeyPortfolioLinkGitHub = new Link({
+    name: 'Joey Hurley GitHub',
+    url: 'https://github.com/jchurley95',
+    description: 'Link to my GitHub profile'
+});
+
+var JoeyPortfolioLinkJeopardy = new Link({
+    name: 'Joey Hurley Jeopardy',
+    url: 'https://jeoparty.bitballoon.com',
+    description: 'Link to my Jeopardy Game From Project 1'
+});
+
 var JoeyPortfolio = new Portfolio({
     name: 'Joey Hurley\'s Portfolio',
     // projects:[{JoeyJeopardy}],
@@ -118,17 +130,6 @@ var JoeyJeopardy = new Project({
     updated_at: ''
 });
 
-var JoeyPortfolioLinkGitHub = new Link({
-    name: 'Joey Hurley GitHub',
-    url: 'https://github.com/jchurley95',
-    description: 'Link to my GitHub profile'
-});
-
-var JoeyPortfolioLinkJeopardy = new Link({
-    name: 'Joey Hurley Jeopardy',
-    url: 'https://jeoparty.bitballoon.com',
-    description: 'Link to my Jeopardy Game From Project 1'
-});
 
 // Save Ashleigh
 Ashleigh.save( (err) => {
