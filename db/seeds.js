@@ -26,6 +26,8 @@ Link.remove({}, (err) => {
     console.log(err);
 })
 
+// ASHELEIGH SEEDED DATA
+
 var Ashleigh = new User({
     first_name: 'Ashleigh',
     last_name: 'Carroll',
@@ -40,21 +42,7 @@ var Ashleigh = new User({
     job_name: "Web Developer"
 });
 
-var Joey = new User({
-    first_name: 'Joey',
-    last_name: 'Hurley',
-    email: 'jchurley95@gmail.com',
-    created_at: '',
-    updated_at: '',
-    age: 22,
-    gender: 'M',
-    user_name: 'TheRealDannyHurley',
-    password: 'badasskittens',
-    // portfolio: 'JoeyPortfolio',
-    job_name: "Web Developer"
-});
-
-
+// SEAN SEEDED DATA
 
 var Sean = new User({
     first_name: 'Sean',
@@ -70,6 +58,8 @@ var Sean = new User({
     job_name: "Full Stack Web Developer"
 });
 
+// JONATHAN SEEDED DATA
+
 var Jonathan = new User({
     first_name: 'YayPants',
     last_name: 'Watson',
@@ -84,32 +74,26 @@ var Jonathan = new User({
     job_name: "Web Developer"
 });
 
+// JOEY SEEDED DATA
+
+var JoeyPortfolioLinkJeopardy = new Link({
+    name: 'Joey Hurley Jeopardy bitballoon',
+    url: 'https://github.com/jchurley95',
+    description: 'Link to my deployed jeopardy app'
+});
+
+
 var JoeyPortfolioLinkGitHub = new Link({
     name: 'Joey Hurley GitHub',
     url: 'https://github.com/jchurley95',
     description: 'Link to my GitHub profile'
 });
 
-var JoeyPortfolioLinkJeopardy = new Link({
-    name: 'Joey Hurley Jeopardy',
-    url: 'https://jeoparty.bitballoon.com',
-    description: 'Link to my Jeopardy Game From Project 1'
-});
-
-var JoeyPortfolio = new Portfolio({
-    name: 'Joey Hurley\'s Portfolio',
-    // projects:[{JoeyJeopardy}],
-    created_at: '',
-    updated_at: '',
-    links: [
-        // {
-        //     name: 'Joey Hurley GitHub',
-        //     url: 'https://github.com/jchurley95',
-        //     description: 'Link to my GitHub'
-        // }
-    ],
-    user_name: 'TheRealDannyHurley'
-});
+// var JoeyJeopardyLinkGitHub = new Link({
+//     name: 'Joey Hurley GitHub',
+//     url: 'https://github.com/jchurley95',
+//     description: 'Link to my GitHub profile'
+// });
 
 var JoeyJeopardy = new Project({
     name: 'Jeopardy',
@@ -117,19 +101,47 @@ var JoeyJeopardy = new Project({
     description: 'Prove you\'re smarter than your friends',
     imageUrl: '../public/img/joeyhurleyjeopardy.png',
     links: [ 
-        // {  
-        //     JoeyPortfolioLinkJeopardy
-        // },
+        {  
+            JoeyPortfolioLinkJeopardy
+        },
         {
-            name: 'Joey Hurley Jeopardy GitHub', 
-            url: 'https://github.com/jchurley95/Jeopardy', 
-            description: 'Link to my Jeopardy Game Git Hub From Project 1'
+            JoeyPortfolioLinkGitHub
         }
     ],
     created_at: '',
     updated_at: ''
 });
 
+var JoeyPortfolio = new Portfolio({
+    name: 'Joey Hurley\'s Portfolio',
+    projects:[
+        {
+            JoeyJeopardy
+        }
+    ],
+    created_at: '',
+    updated_at: '',
+    links: [
+        {
+            JoeyPortfolioLinkGitHub
+        }
+    ],
+    user_name: 'TheRealDannyHurley'
+});
+
+var Joey = new User({
+    first_name: 'Joey',
+    last_name: 'Hurley',
+    email: 'jchurley95@gmail.com',
+    created_at: '',
+    updated_at: '',
+    age: 22,
+    gender: 'M',
+    user_name: 'TheRealDannyHurley',
+    password: 'badasskittens',
+    portfolio: JoeyPortfolio,
+    job_name: "Web Developer"
+});
 
 // Save Ashleigh
 Ashleigh.save( (err) => {
