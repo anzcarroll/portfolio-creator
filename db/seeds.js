@@ -107,6 +107,16 @@ var JoeyJeopardy = new Project({
     updated_at: ''
 });
 
+var JoeyConnectFour = new Project({
+    name: 'ConnectFour',
+    user_name: 'TheRealDannyHurley',
+    description: 'Prove you\'re faster than your friends',
+    imageUrl: '../public/img/joeyhurleyjeopardy.png',
+    links: [JoeyPortfolioLinkJeopardy, JoeyJeopardyLinkGitHub],
+    created_at: '',
+    updated_at: ''
+});
+
 var JoeyPortfolio = new Portfolio({
     name: 'Joey Hurley\'s Portfolio',
     projects: [JoeyJeopardy],
@@ -127,7 +137,7 @@ var Joey = new User({
     user_name: 'TheRealDannyHurley',
     password: 'badasskittens',
     portfolio: JoeyPortfolio,
-    projects: [JoeyJeopardy],
+    projects: [JoeyJeopardy, JoeyConnectFour],
     job_name: "Web Developer"
 });
 
@@ -153,6 +163,10 @@ JoeyPortfolioLinkGitHub.save( (err) => {
 JoeyJeopardy.save( (err) => {
     if (err) console.log('Joey Jeopardy Project error' + err);
     console.log('Joey Jeopardy Project created');
+})
+JoeyConnectFour.save( (err) => {
+    if (err) console.log('Joey ConnectFour Project error' + err);
+    console.log('Joey ConnectFour Project created');
 })
 JoeyPortfolio.save( (err) => {
     if (err) console.log('Joey Portfolio error' + err);

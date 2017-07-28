@@ -125,20 +125,17 @@ router.get('/', (req, res) => {
   var userId = req.params.userId;
   User.findById(userId)
       .then((user) => {
+        console.log(`User object: ${user}`)
         var arrayOfProjects = user.projects;
-        var projectId = arrayOfProjects[0];
-        Project.findById(projectId)
-        .then((project) => {
-          res.render('projects/index', {
-            userId: userId,
-            user,
-            arrayOfProjects,
-            project
-          })
-
+        console.log(`Array of Objects ${arrayOfProjects}`);
+        // console.log(arrayOfProjects);
+        res.render('projects/index', {
+          userId: userId,
+          user,
+          arrayOfProjects,
+        })
         })
       });
-})
 
 //======================
 // EXPORTS

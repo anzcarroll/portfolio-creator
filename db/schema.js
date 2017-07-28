@@ -22,7 +22,7 @@ var ProjectSchema = new Schema({
 
 var PortfolioSchema = new Schema({
     name: String,
-    projects: [{ProjectSchema}],
+    projects: [ProjectSchema],
     created_at: Date,
     updated_at: Date,
     links: [LinkSchema],
@@ -39,7 +39,7 @@ var UserSchema = new Schema({
     gender: String,
     user_name: String, // REACH regex
     password: String,
-    portfolio: [PortfolioSchema],
+    portfolio: PortfolioSchema,
     projects: [ProjectSchema],
     job_name: String
 });

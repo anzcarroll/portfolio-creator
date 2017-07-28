@@ -1,15 +1,14 @@
-
-
 <h1>My Projects:</h1>
 <div id="list">
-    <ol>
-        <a href="/users/{{userId}}/projects/{{project._id}}"><button>View {{project.name}}</button></a>
-        <div>{{project.name}}</div>
-        <div>{{project.user_name}}</div>
-        <div>{{project.description}}</div>
+    <ol>{{#each arrayOfProjects}}
+        <a href="/users/{{user.id}}/thiss/{{this._id}}"><button>View {{this.name}}</button></a>
+        <div>{{this.name}}</div>
+        <div>{{this.user_name}}</div>
+        <div>{{this.description}}</div>
         {{!--<div>this.imageUrl--}}
-        <div>{{project.links}}</div>
-        <a href="/users/{{userId}}/projects/{{project.id}}/edit"><button>Edit {{project.name}}</button></a>
+        <div>{{this.links}}</div>
+        <a href="/users/{{user.id}}/thiss/{{this.id}}/edit"><button>Edit {{this.name}}</button></a>
     </ol>
-    <a href="/users/{{userId}}"><button>Go back to User's Dashboard</button></a>
+    {{/each}}
+    <a href="/users/{{user.id}}"><button>Go back to User's Dashboard</button></a>
 </div>
