@@ -1,8 +1,13 @@
 <h1>My Projects:</h1>
 <div id="list">
     <ol>
-        {{#each projects}}
-            <li>{{this}}</li>
-        {{/each}}
+        {{#each Project}}
+    <a href="/users/{{userId}}/projects/{{this._id}}/"><button>{{this.name}}</button></a>
+    <div>{{this.user_name}}</div>
+    <div>{{this.description}}</div>
+    {{!--<div>this.imageUrl--}}
+    <div>{{this.links}}</div>
+    {{/each}}
     </ol>
+    <a href="/users/{{userId}}"><button>Go back to User's Dashboard</button></a>
 </div>
