@@ -1,8 +1,10 @@
-<h1>My Projects:</h1>
-<div id="list">
-    <ol>
-        {{#each projects}}
-            <li>{{this}}</li>
-        {{/each}}
-    </ol>
-</div>
+<h1>My Project:</h1>
+
+<div>{{project.id}}</div>
+<div>{{project.user_name}}</div>
+<div>{{project.description}}</div>
+<div>{{project.imageUrl}}</div>
+<div>{{project.links}}</div>
+<div>{{project.created_at}}</div>
+<div>{{project.updated_at}}</div>
+<a href="..users/{{user.id}}/projects/{{project.id}}/edit"><button>Edit my Profile</button></a>
