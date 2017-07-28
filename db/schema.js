@@ -31,7 +31,7 @@ var ProjectSchema = new Schema({
 var UserSchema = new Schema({
     first_name: String,
     last_name: String,
-    email: {type: String , required: true, unique: true}, // REACH add regex
+    email: String, //{type: String , required: true, unique: true}, // REACH add regex
     created_at: Date,
     updated_at: Date,
     age: Number,
