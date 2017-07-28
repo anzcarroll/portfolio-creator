@@ -135,7 +135,24 @@ router.put('/:projectId', (req, res) => {
 });
 
 
+//======================
+// INDEX
+//======================
 
+
+router.get('/', (req, res) => {
+  var userId = req.params.userId;
+  User.findById(userId)
+      .then((user) => {
+        var arrayOfProjects = user.projects;
+        // console.log(arrayOfProjects);
+        res.render('projects/index', {
+          userId,
+          user,
+          arrayOfProjects,
+        })
+        })
+      });
 
 //======================
 // DELETE
@@ -167,24 +184,7 @@ router.get('/:projectId/delete', (req, res) => {
   });
 });
 
-//======================
-// INDEX
-//======================
 
-
-router.get('/', (req, res) => {
-  var userId = req.params.userId;
-  User.findById(userId)
-      .then((user) => {
-        var arrayOfProjects = user.projects;
-        // console.log(arrayOfProjects);
-        res.render('projects/index', {
-          userId,
-          user,
-          arrayOfProjects,
-        })
-        })
-      });
 
 //======================
 // EXPORTS
