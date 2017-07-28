@@ -9,7 +9,12 @@
         <li>{{this.user_name}}</li>
         <li>{{this.description}}</li>
         {{!--<div>this.imageUrl--}}
-        <li>{{this.links}}</li>
+        <li>Links: {{#each this.links}}
+            <ul>
+                <li><a href="{{this.url}}">{{this.description}}</a></li>
+            </ul>
+            {{/each}}
+        </li>
         <a href="/users/{{../user.id}}/projects/{{this.id}}/edit"><button>Edit {{this.name}}</button></a>
         <a href="/users/{{../user.id}}/projects/{{this._id}}"><button>View {{this.name}}</button></a>
     </ul>
