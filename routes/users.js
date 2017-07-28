@@ -18,23 +18,36 @@ router.get('/', (req, res) => {
   res.send("Your user data");
 })
 
-router.get('/:userId', (req, res) => {
-  const userId = req.params.userId
-  res.send(`Your user ID is ${userId}`)
-})
+
 //======================
 // NEW
 //======================
 // Create a GET new route "/new" that renders the new.hbs form
+//this is our index
+
+
 
 
 
 //======================
 // SHOW
 //======================
-// Create a GET show route "/:id" that renders the donut's show page
+// Create a GET show route "/:id" that renders the users's show page
+router.get('/:userId', (req, res) => {
+  const userIdToSearchDbFor = req.params.userId
+  // res.send(`Your user ID is ${userIdToSearchDbFor}`)
 
-
+    User.findById(userIdToSearchDbFor)
+        .then((user) => {
+            res.render(
+                'users/show',
+                { user }
+            );
+        })
+        .catch((error) => {
+            console.log(`Error retrieving user with ID of ${userIdToSearchDbFor}`)
+        });
+});
 
 
 //======================

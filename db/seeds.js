@@ -24,10 +24,9 @@ Portfolio.remove({}, function(err) {
 
 Link.remove({}, (err) => {
     console.log(err);
-
 })
 
-var ashleigh = new User({
+var Ashleigh = new User({
     first_name: 'Ashleigh',
     last_name: 'Carroll',
     email: 'anzcarroll@gmail.com',
@@ -85,9 +84,7 @@ var Jonathan = new User({
 
 var JoeyPortfolio = new Portfolio({
     name: 'Joey Hurley\'s Portfolio',
-    projects: [
-        {JoeyJeopardy}
-        ],
+    projects:[{JoeyJeopardy}],
     created_at: '',
     updated_at: '',
     links: [
@@ -105,8 +102,8 @@ var JoeyJeopardy = new Project({
     user_name: 'TheRealDannyHurley',
     description: 'Prove you\'re smarter than your friends',
     imageUrl: '../public/img/joeyhurleyjeopardy.png',
-    links: [
-        {
+    links: [ 
+        {  
             JoeyPortfolioLinkJeopardy
         },
         {
@@ -132,7 +129,7 @@ var JoeyPortfolioLinkJeopardy = new Link({
 });
 
 // Save Ashleigh
-ashleigh.save( (err) => {
+Ashleigh.save( (err) => {
     if (err) console.log('Ashleigh user error' + err);
     console.log('Ashleigh created');
 })
