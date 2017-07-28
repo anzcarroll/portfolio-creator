@@ -1,6 +1,14 @@
-<h1>Edit {{userName}}'s Projects Page</h1>
+<h1>Edit {{userId}}'s Projects Page</h1>
 
-<form action="/users/{{projectId}}/projects/{{project.id}}?_method=PUT" method="POST">
+<form action="/users/{{project.id}}/projects/{{project.id}}?_method=PUT" method="POST">
     <input type="text" value="{{project.name}}" name="name">
     <input type="submit" value="Update Project">
 </form>
+<div>Project ID: {{project.id}}</div>
+<div> Project Name: {{project.name}}</div>
+<div>Project username: {{project.user_name}}</div>
+<div>project desccription: {{project.description}}</div>
+<div>PRoject Image URL: {{project.imageUrl}}</div>
+<div>PRoject Links: {{project.links}}</div>
+<div>projects: created at: {{project.created_at}}</div>
+<div>Projects: updated at: {{project.updated_at}}</div>

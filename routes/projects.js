@@ -10,35 +10,56 @@ var Project = require("../models/project")
 var User = require("../models/user");
 
 
-//======================
-// INDEX
-//======================
 
 
-router.get('/', (req, res) => {
-  var userId = req.params.userId;
-  User.findById(userId)
-      .then((user) => {
-        var arrayOfProjects = user.projects;
-        var projectId = arrayOfProjects[0];
-        Project.findById(projectId)
+router.get('/:projectId/edit', (req, res) => {
+  const userId = req.params.userId;
+  const projectId = req.params.projectId;
+  console.log("requested edit page");
+  // res.send(`Your user ID is ${userIdToSearchDbFor}`)
+
+    Project.findById(projectId)
         .then((project) => {
-          res.render('projects/index', {
-            userId: userId,
-            user,
-            arrayOfProjects,
-            project
-          })
-
+          console.log(userId);
+            res.render(
+                'projects/edit',
+                { project, 
+                  userId }
+            );
         })
-      });
-//   console.log(Projects);
-//   // res.send("this is index of all projects")
-//   res.render(
-//         'projects/index',
-//         { Projects }
-// );
+        .catch((error) => {
+            console.log(`Error retrieving user with ID of ${userId}`)
+        });
+});
+
+router.get('/:projectId/update', (req, res) => {
+  const projectId = req.params.projectId;
+  res.send(`You want to update project # ${projectId}`);
 })
+
+// router.get('/:projectId', (req, res) => {
+//   const projectId = req.params.projectId
+//   res.send(`Your project ID is ${projectId}`);
+// })
+router.get('/:projectId', (req, res) => {
+  const userId = req.params.userId;
+  const projectId = req.params.projectId;
+  // res.send(`Your user ID is ${userIdToSearchDbFor}`)
+
+    Project.findById(projectId)
+        .then((project) => {
+          console.log(userId);
+            res.render(
+                'projects/show',
+                { project, 
+                  userId }
+            );
+        })
+        .catch((error) => {
+            console.log(`Error retrieving user with ID of ${userId}`)
+        });
+});
+
 
 //======================
 // NEW
@@ -95,7 +116,29 @@ router.get('/:projectId/delete', (req, res) => {
   res.send(`You want to delete project # ${projectId}`);
 })
 
+//======================
+// INDEX
+//======================
 
+
+router.get('/', (req, res) => {
+  var userId = req.params.userId;
+  User.findById(userId)
+      .then((user) => {
+        var arrayOfProjects = user.projects;
+        var projectId = arrayOfProjects[0];
+        Project.findById(projectId)
+        .then((project) => {
+          res.render('projects/index', {
+            userId: userId,
+            user,
+            arrayOfProjects,
+            project
+          })
+
+        })
+      });
+})
 
 //======================
 // EXPORTS

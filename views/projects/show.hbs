@@ -1,10 +1,12 @@
 <h1>My Project:</h1>
 
 <div>{{project.id}}</div>
+<div>{{project.name}}</div>
 <div>{{project.user_name}}</div>
 <div>{{project.description}}</div>
 <div>{{project.imageUrl}}</div>
 <div>{{project.links}}</div>
 <div>{{project.created_at}}</div>
 <div>{{project.updated_at}}</div>
-<a href="..users/{{user.id}}/projects/{{project.id}}/edit"><button>Edit my Profile</button></a>
+<a href="/users/{{userId}}/projects/{{project.id}}/edit"><button>Edit My Project</button></a>
+<a href="/users/{{userId}}/projects"><button>Go back</button></a>
