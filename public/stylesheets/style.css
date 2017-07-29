@@ -1,10 +1,13 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
+}
+
+nav {
+  background-color: #3ea9f0!important
 }
 
  .btn {
@@ -14,6 +17,17 @@ a {
 .secondary {
       background-color: #fff!important;
       color: #3ea9f0!important
+}
+.delete {
+  background-color: #b40000!important;
+}
+.nav-wrapper {
+  padding-left:20px;
+  padding-right:20px;
+}
+
+.body-row {
+  width:90%;
 }
 
  input[type="submit"] {

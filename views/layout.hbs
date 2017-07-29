@@ -5,14 +5,26 @@
     <link rel='stylesheet' href="/stylesheets/style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
   </head>
+
   <body>
-    <div class="row" style="text-align:right">
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Logo</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="#">Login</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Browse</a></li>
+      </ul>
     </div>
+  </nav>
+    <div class="row body-row">
     {{{body}}}
+    </div>
     <script
       src="http://code.jquery.com/jquery-3.2.1.min.js"
       integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
       crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
+
   </body>
 </html>

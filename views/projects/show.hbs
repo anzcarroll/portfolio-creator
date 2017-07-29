@@ -12,6 +12,6 @@
 </div>
 <div>{{project.created_at}}</div>
 <div>{{project.updated_at}}</div>
-<a href="/users/{{userId}}/projects/{{project.id}}/edit"><button>Edit My Project</button></a>
-<a href="/users/{{userId}}/projects/{{project._id}}/delete"><button>Delete {{project.name}}</button></a>
-<a href="/users/{{userId}}/projects"><button>Go back</button></a>
+<a href="/users/{{userId}}/projects/{{project.id}}/edit"><button class="btn">Edit My Project</button></a>
+<a href="/users/{{userId}}/projects/{{project._id}}/delete"><button class="btn delete">Delete {{project.name}}</button></a>
+<a href="/users/{{userId}}/projects"><button class="btn secondary">Go back</button></a>
