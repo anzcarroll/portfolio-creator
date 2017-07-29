@@ -104,6 +104,10 @@ router.put('/:projectId', (req, res) => {
     foundProject.user_name = req.body.user_name;
     foundProject.description = req.body.description;
     foundProject.imageUrl = req.body.imageUrl;
+    const foundLinks = user.projects.find((project) => {
+      return project.id === projectId;
+    });
+    arrayOfLinks = user.projects.links;
     // foundProject.links.link.url = req.body.link.url
     // foundProject.links.push(req.body.links);
 
@@ -151,6 +155,7 @@ router.get('/', (req, res) => {
 //======================
 // DELETE
 //======================
+
 router.get('/:projectId/delete', (req, res) => {
   const userId = req.params.userId;
   const projectId = req.params.projectId;
