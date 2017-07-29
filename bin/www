@@ -5,7 +5,7 @@
  */
 
 var app = require('../app');
-var debug = require('debug')('testing-heroku:server');
+var debug = require('debug')('portfolio-creator:server');
 var http = require('http');
 
 /**
