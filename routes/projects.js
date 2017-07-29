@@ -141,7 +141,8 @@ router.put('/:projectId', (req, res) => {
     foundProject.name = req.body.name;
     foundProject.user_name = req.body.user_name;
     foundProject.description = req.body.description;
-    foundProject.links.push(req.body.links);
+    // foundProject.links.link.url = req.body.link.url
+    // foundProject.links.push(req.body.links);
 
     // then save the user and return the promise so we can chain
     // another .then() block and only use one .catch() block

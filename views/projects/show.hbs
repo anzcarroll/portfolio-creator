@@ -5,7 +5,11 @@
 <div>{{project.user_name}}</div>
 <div>{{project.description}}</div>
 <div>{{project.imageUrl}}</div>
-<div>{{project.links}}</div>
+<div>{{#each project.links}}
+    <div>{{this.url}}</div>
+    <div>{{this.description}}</div>
+    {{/each}}
+</div>
 <div>{{project.created_at}}</div>
 <div>{{project.updated_at}}</div>
 <a href="/users/{{userId}}/projects/{{project.id}}/edit"><button>Edit My Project</button></a>
