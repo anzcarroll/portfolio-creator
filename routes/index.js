@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
     const userEmail = req.body.email;
     const userPassword = req.body.password;
-    User.findOne({"email": userEmail}, ).then((user) => {
+    User.findOne({"email": userEmail}).then((user) => {
         if (user === null) {
             const newUser = new NewUserSchema(req.body);
             newUser.save()
