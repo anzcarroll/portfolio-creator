@@ -64,15 +64,6 @@ router.get('/:projectId/edit', (req, res) => {
 });
 });
 
-//======================
-// UPDATE
-//======================
-
-router.get('/:projectId/update', (req, res) => {
-  const projectId = req.params.projectId;
-  res.send(`You want to update project # ${projectId}`);
-})
-
 
 //======================
 // SHOW PROJECT
@@ -94,36 +85,6 @@ router.get('/:projectId', (req, res) => {
         })
   });
 });
-
-
-
-
-
-
-//======================
-// SHOW
-//======================
-// Create a GET show route "/:id" that renders the donut's show page
-
-router.get('/:projectId', (req, res) => {
-  const projectId = req.params.projectId
-  res.send(`Your project ID is ${projectId}`);
-})
-
-
-//======================
-// CREATE
-//======================
-
-
-
-
-
-// router.get('/:projectId/edit', (req, res) => {
-//   const projectId = req.params.projectId;
-//   res.send(`You want to edit project # ${projectId}`);
-// })
-
 
 //======================
 // UPDATE
