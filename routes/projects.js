@@ -121,7 +121,7 @@ router.put('/:projectId', (req, res) => {
           user,
           arrayOfProjects
         },
-    );
+    )
   }).catch((error) => {
     console.log(`Failed to update project with ID of ${projectId}`);
     console.log(error);
