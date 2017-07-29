@@ -47,7 +47,13 @@ router.get('/:projectId/update', (req, res) => {
 //======================
 
 router.get('/new', (req, res) => {
-  res.send(`You want to create a new project`);
+  res.send("This is the new project page");
+  // const userId = req.params.userId;
+  // const projectId = req.params.projectId;
+
+  // res.render(`projects/new`, (req,res) => {
+  //   project
+  // });
 })
 
 router.get('/:projectId', (req, res) => {
@@ -89,8 +95,19 @@ router.get('/:projectId', (req, res) => {
 // CREATE
 //======================
 
-
-
+router.post('/', function(req, res) {
+  var project = new Project({
+    first_name: req.body.first_name,
+    email: req.body.email,
+    items: req.body.items
+  });
+  user.save(function(err, user) {
+    if(err) console.log(err);
+    
+    console.log(user);
+    res.send(user);
+  });
+});
 
 //======================
 // EDIT
