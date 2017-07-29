@@ -1,14 +1,24 @@
-<h1>Create a New Project Page</h1>
+<h1>Create a New Project</h1>
 
-<form method="POST" action="/projects">
-
-
-    {{!--<div id="description-input">
-        <label for="description">Description:</label>
-        <input name="description">
-    </div>--}}
-
-    <button>Submit</button>
+<form method="POST" action="/users/{{userId}}/projects">
+<div>
+    <input type="text" name="name" placeholder="Project Name">
+</div>
+<div>
+    <input type="text" name="user_name" placeholder="User Name">
+</div>
+<div>
+    <input type="text" name="description" placeholder="Description">
+</div>
+<div>
+    <input type="text" name="imageUrl" placeholder="Image URL">
+</div>
+<div>
+    <input type="text" name="links" placeholder="Links">
+</div>
+<div>
+    <input type="submit" value="Create Project">
+</div>
 </form>
 
 <a href="/projects">Go Back</a>

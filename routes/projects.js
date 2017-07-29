@@ -10,7 +10,47 @@ var Project = require("../models/project")
 var User = require("../models/user");
 
 
+//======================
+// NEW USER FORM
+//======================
 
+router.get('/new', (req, res) => {
+  const userId = req.params.userId;
+  res.render(
+    'projects/new', {
+      userId
+    }
+  );
+})
+
+//========================
+// NEW USER CREATE ROUTE
+//========================
+
+router.post('/', (req, res) => {
+    const userId = req.params.userId;
+    const newProjectInfo = req.body;
+
+    User.findById(userId).then((user) => {
+      const newProject = new Project(newProjectInfo);
+      user.projects.push(newProject);
+      return user.save();
+      }).then((user) => {
+        console.log(`Created a new project with ID of ${user.projects[0].id}`);
+
+        res.render(
+          'projects', {
+            project: user.projects[-1]
+          }
+        )
+        res.redirect(`/users/${user.id}/projects`)
+      })
+    })
+
+
+//======================
+// EDIT
+//======================
 
 router.get('/:projectId/edit', (req, res) => {
   const userId = req.params.userId;
@@ -37,23 +77,12 @@ router.get('/:projectId/update', (req, res) => {
   res.send(`You want to update project # ${projectId}`);
 })
 
-// router.get('/:projectId', (req, res) => {
-//   const projectId = req.params.projectId
-//   res.send(`Your project ID is ${projectId}`);
-// })
 
-//======================
-// NEW
-//======================
 
-router.get('/new', (req, res) => {
-  res.send(`You want to create a new project`);
-})
 
 router.get('/:projectId', (req, res) => {
   const userId = req.params.userId;
   const projectId = req.params.projectId;
-  // res.send(`Your user ID is ${userIdToSearchDbFor}`)
 
     Project.findById(projectId)
         .then((project) => {
@@ -92,13 +121,11 @@ router.get('/:projectId', (req, res) => {
 
 
 
-//======================
-// EDIT
-//======================
-router.get('/:projectId/edit', (req, res) => {
-  const projectId = req.params.projectId;
-  res.send(`You want to edit project # ${projectId}`);
-})
+
+// router.get('/:projectId/edit', (req, res) => {
+//   const projectId = req.params.projectId;
+//   res.send(`You want to edit project # ${projectId}`);
+// })
 
 
 //======================
