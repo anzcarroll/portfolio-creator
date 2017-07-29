@@ -29,7 +29,10 @@ nav {
 .body-row {
   width:90%;
 }
-
+input[type="text"] {
+  width:100%;
+  max-width:600px;
+}
  input[type="submit"] {
   background-color: #3ea9f0!important;
     color: #fff;
