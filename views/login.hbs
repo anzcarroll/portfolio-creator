@@ -1,0 +1,21 @@
+<h1 style="text-align:center">Welcome Back to Portolio Creator</h1>
+<h2 style="text-align: center">Login to Your Account</h2>
+<div id="loginForm" class="row">
+    <div class="col s3">
+    </div>
+<div class="col s6">
+<form action="/login-submit?_method=PUT" method="POST">
+    <div class="row">
+    <input type="email" placeholder="email" name="email" required>
+    <input type="password" placeholder="password" name="password" required>
+    <p style="color: red">{{error}}</p>
+    </div>
+    <div class="row" style="text-align:center">
+    <input type="submit" value="Login" class="btn">
+    </div>
+</form>
+
+</div>
+<div class="col s3">
+</div>
+</div>
