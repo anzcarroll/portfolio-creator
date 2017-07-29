@@ -52,22 +52,24 @@ router.put('/login-submit', (req, res) => {
     console.log(`This user's object: ${user}`);
     console.log(`This user's password: ${user.password}`);
     arrayOfProjects = user.projects;
-    if (user.password === req.body.password) {
-        res.render('projects/index', {
-            userId: user._id,
-            user, 
-            arrayOfProjects
-        })
-    } else {
-        res.render('login', {
-            error: `Incorrect Username or Password`
-        })
-    }
-
-  }).catch((error) => {
-    console.log(`Failed to Login`);
-    console.log(error);
+        if (user.password === req.body.password) {
+            res.render('projects/index', {
+                userId: user._id,
+                user, 
+                arrayOfProjects
+            })
+        } else {
+            res.render('login', {
+                errorMessage: `Incorrect Password`
+            })
+        } 
+    })
+    .catch((error) => {
+                res.render('login', {
+                errorMessage: `Email Address does not exist`
   });
+    
+  })
 });
 
 module.exports = router;
