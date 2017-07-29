@@ -167,8 +167,8 @@ router.get('/:projectId/delete', (req, res) => {
           userId: user._id,
           user,
           arrayOfProjects
-        },
-    );
+        }
+    )
   }).catch((error) => {
     console.log(`Failed to delete user with ID of ${userId}`);
     console.log(error);
