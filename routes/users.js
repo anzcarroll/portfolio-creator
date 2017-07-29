@@ -2,10 +2,11 @@
 // REQUIREMENTS
 //======================
 var express = require('express');
-var router = express.Router();
+const router = express.Router({mergeParams: true}); 
 var mongoose = require('mongoose');
 
 var User = require("../models/user");
+var Project = require("../models/project")
 
 
 //======================
@@ -26,9 +27,7 @@ router.get('/', (req, res) => {
 // NEW
 //======================
 // Create a GET new route "/new" that renders the new.hbs form
-//this is our index
-
-
+//this is our index home page 
 
 
 
@@ -63,12 +62,55 @@ router.get('/:userId', (req, res) => {
 //======================
 // EDIT
 //======================
+router.get('/:userId', (req, res) => {
 
+    const userIdToFind = req.params.userId;
 
+    User.findById(userIdToFind)
+        .then((user) => {
+            res.render(
+                'users/edit',
+                { user }
+            );
+        })
+        .catch((error) => {
+            console.log(`Error rendering edit form for user with ID of ${userIdToFind}`)
+        })
+});
 
 //======================
 // UPDATE
 //======================
+router.put('/:userId', (req, res) => {
+    console.log("You asked to update your user ID");
+    const userIdToUpdate = req.params.userId;
+    console.log("I am the userID to update" + userIdToUpdate);
+    console.log(`Your User Id: ${userIdToUpdate}`)
+    const updatedUserInfo = req.body;
+
+    User.findByIdAndUpdate(
+        userIdToUpdate,
+        updatedUserInfo,
+        { new: true } // <-- DON'T FORGET THIS!!!
+        
+    )
+        .then((user) => {
+            console.log(`User with ID of ${user.id} updated!`);
+
+            res.render(
+                'users/show',
+                { user,
+                userIdToUpdate,
+                updatedUserInfo 
+                }
+            )
+        })
+        .catch((error) => {
+            console.log(`User with ID of ${user.id} failed to update!`)
+            console.log(error);
+        })
+
+});
 
 
 

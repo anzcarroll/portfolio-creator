@@ -37,7 +37,7 @@ const projectsRoute = require('./routes/projects.js');
 app.use('/users/:userId/projects', projectsRoute);
 
 const usersRoute = require('./routes/users.js');
-app.use('/users', usersRoute);
+app.use('/users/:userId', usersRoute);
 
 const indexRoute = require('./routes/index.js');
 app.use('/', indexRoute);

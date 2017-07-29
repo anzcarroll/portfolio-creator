@@ -16,6 +16,7 @@ var User = require("../models/user");
 
 router.get('/new', (req, res) => {
   const userId = req.params.userId;
+  console.log("i am the userId:" + userId);
   res.render(
     'projects/new', {
       userId
@@ -102,15 +103,17 @@ router.put('/:projectId', (req, res) => {
     foundProject.name = req.body.name;
     foundProject.user_name = req.body.user_name;
     foundProject.description = req.body.description;
-    // foundProject.links.link.url = req.body.link.url
-    // foundProject.links.push(req.body.links);
+    foundProject.imageUrl = req.body.imageUrl;
+    //foundProject.links.url = req.body.links.url
+    
+    //foundProject.push(req.body.links);
 
     // then save the user and return the promise so we can chain
     // another .then() block and only use one .catch() block
     return user.save();
 
   }).then((user) => {
-    console.log(`updated user with ID of ${user._id}`);
+    console.log(`updated project with ID of ${project._id}`);
 
     res.render(
         'projects/index',
