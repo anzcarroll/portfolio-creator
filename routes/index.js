@@ -13,25 +13,29 @@ router.get('/', (req, res) => {
 
 
 router.post('/', (req, res) => {
+    const userEmail = req.body.email;
+    const userPassword = req.body.password;
+    User.findOne({"email": userEmail}, ).then((user) => {
+        if (user === null) {
+            const newUser = new NewUserSchema(req.body);
+            newUser.save()
+                    .then((user) => {
+                        res.render(`users/show`, { user } );
+                    })
+                    .catch((error) => {
+                        console.log('Error saving new user to database!');
+                        console.log(error);
+                    });
+        } else {
+            res.render('login');
+        }
 
-    // want to add more information to the user before
-    // you save, use code below:
-const newUser = new NewUserSchema(req.body);
-console.log(newUser);
+    })
 
-  newUser.save()
-        .then((user) => {
-            console.log(`New user created with ID of: ${user.id}`);
 
-            res.render(
-              `users/show`,
-                { user }
-            );
-        })
-        .catch((error) => {
-            console.log('Error saving new user to database!');
-            console.log(error);
-        });
+
+
+
 });
 
 router.get('/about', (req, res) => {
