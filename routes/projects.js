@@ -112,15 +112,12 @@ router.put('/:projectId', (req, res) => {
     return user.save();
 
   }).then((user) => {
-    console.log(`updated user with ID of ${user._id}`);
-
-    res.render(
-        'projects/index',
-        {
-         userId: user._id,
+    // console.log(`updated user with ID of ${user._id}`);
+    res.render('projects/index', {
+          userId: user._id,
           user,
           arrayOfProjects
-        },
+        }
     )
   }).catch((error) => {
     console.log(`Failed to update project with ID of ${projectId}`);
