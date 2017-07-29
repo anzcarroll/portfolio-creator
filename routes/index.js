@@ -54,7 +54,7 @@ router.put('/login-submit', (req, res) => {
   console.log(`Email: ${userEmail}`);
   console.log(`Password: ${userPassword}`)
 
- User.findOne({"email": userEmail}, ).then((user) => {
+ User.findOne({"email": userEmail}).then((user) => {
     console.log(`This user's object: ${user}`);
     console.log(`This user's password: ${user.password}`);
     arrayOfProjects = user.projects;
