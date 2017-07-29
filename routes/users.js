@@ -2,7 +2,7 @@
 // REQUIREMENTS
 //======================
 var express = require('express');
-var router = express.Router();
+var router = express.Router({mergeParams: true});
 var mongoose = require('mongoose');
 
 var User = require("../models/user");
@@ -25,8 +25,7 @@ router.get('/', (req, res) => {
 //======================
 // NEW
 //======================
-// Create a GET new route "/new" that renders the new.hbs form
-//this is our index
+//this is our index home page
 
 
 
@@ -37,7 +36,7 @@ router.get('/', (req, res) => {
 //======================
 // Create a GET show route "/:id" that renders the users's show page
 router.get('/:userId', (req, res) => {
-  const userIdToSearchDbFor = req.params.userId
+  const userIdToSearchDbFor = req.params.id
   // res.send(`Your user ID is ${userIdToSearchDbFor}`)
 
     User.findById(userIdToSearchDbFor)
@@ -63,7 +62,22 @@ router.get('/:userId', (req, res) => {
 //======================
 // EDIT
 //======================
+router.get('/:userId/edit', (req, res) => {
 
+    var userId = req.params.userId;
+
+    User.findById(userId)
+        .then((user) => {
+            console.log(`I can render this ${userId}`)
+            res.render(
+                'users/edit',
+                { user }
+            );
+        })
+        .catch((error) => {
+            console.log(`Error rendering edit form for user with ID of ${userId}`)
+        })
+});
 
 
 //======================

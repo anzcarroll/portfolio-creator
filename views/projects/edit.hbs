@@ -1,13 +1,13 @@
 <h1>Edit {{user.first_name}}'s Project: {{project.name}}</h1>
 <div class="row">
 <form action="/users/{{userId}}/projects/{{project.id}}?_method=PUT" method="POST">
-    <div><input type="text" value="{{project.name}}" name="name"></div>
-    <div><input type="text" value="{{project.user_name}}" name="user_name"></div>
-    <div><input type="text" value="{{project.description}}" name="description"></div>
-    <div><input type="text" value="{{project.imageUrl}}" name="imageUrl"></div>
+    <div>Project Name:<input type="text" value="{{project.name}}" name="name"></div>
+    <div>WHYDOWENEEDTHIS:<input type="text" value="{{project.user_name}}" name="user_name"></div>
+    <div>Tell us about your project:<input type="text" value="{{project.description}}" name="description"></div>
+    <div>Put an image with it:<input type="text" value="{{project.imageUrl}}" name="imageUrl"></div>
     {{#each project.links}}
-    <div><input type="text" value="{{this.url}}" name="link.url"></div>
-    <div><input type="text" value="{{this.description}}" name="link.description"></div>
+    <div>actual url:<input type="text" value="{{this.url}}" name="link.url"></div>
+    <div>describe link:<input type="text" value="{{this.description}}" name="link.description"></div>
     {{/each}}
     <div><input type="submit" value="Update Project" class="btn"></div>
 </form>
