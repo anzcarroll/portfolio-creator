@@ -27,7 +27,9 @@ router.post('/', (req, res) => {
                         console.log(error);
                     });
         } else {
-            res.render('login');
+            res.render('login', {
+                errorMessage: `User already exists. Please log in`
+            });
         }
 
     })
