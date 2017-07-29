@@ -1,5 +1,5 @@
 <h1>My Projects Dashboard</h1>
-<a href="/users/{{userId}}/projects/new"><button>Create New Project</button></a>
+<a href="/users/{{userId}}/projects/new"><button class="btn">Create New Project</button></a>
 <div id="list">
 
     {{#each arrayOfProjects}}
@@ -17,9 +17,9 @@
             </ul>
             {{/each}}
         </li>
-        <a href="/users/{{../user.id}}/projects/{{this.id}}/edit"><button>Edit {{this.name}}</button></a>
-        <a href="/users/{{../user.id}}/projects/{{this._id}}"><button>View {{this.name}}</button></a>
-        <a href="/users/{{../user.id}}/projects/{{this._id}}/delete"><button>Delete {{this.name}}</button></a>
+        <a href="/users/{{../user.id}}/projects/{{this.id}}/edit"><button class="btn">Edit {{this.name}}</button></a>
+        <a href="/users/{{../user.id}}/projects/{{this._id}}"><button class="btn">View {{this.name}}</button></a>
+        <a href="/users/{{../user.id}}/projects/{{this._id}}/delete"><button class="btn">Delete {{this.name}}</button></a>
         
 
     </ul>

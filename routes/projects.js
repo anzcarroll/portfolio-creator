@@ -58,6 +58,7 @@ router.get('/:projectId/edit', (req, res) => {
       })
 
       res.render('projects/edit', {
+        user,
         userId, 
         project: foundProject
       })
@@ -102,6 +103,7 @@ router.put('/:projectId', (req, res) => {
     foundProject.name = req.body.name;
     foundProject.user_name = req.body.user_name;
     foundProject.description = req.body.description;
+    foundProject.imageUrl = req.body.imageUrl;
     // foundProject.links.link.url = req.body.link.url
     // foundProject.links.push(req.body.links);
 
