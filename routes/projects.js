@@ -11,7 +11,7 @@ var User = require("../models/user");
 
 
 //======================
-// NEW USER FORM
+// NEW PROJECT FORM
 //======================
 
 router.get('/new', (req, res) => {
@@ -23,9 +23,9 @@ router.get('/new', (req, res) => {
   );
 })
 
-//========================
-// NEW USER CREATE ROUTE
-//========================
+//============================
+// NEW PROJECT CREATE ROUTE
+//============================
 
 router.post('/', (req, res) => {
     const userId = req.params.userId;
@@ -37,12 +37,6 @@ router.post('/', (req, res) => {
       return user.save();
       }).then((user) => {
         console.log(`Created a new project with ID of ${user.projects[0].id}`);
-
-        res.render(
-          'projects', {
-            project: user.projects[-1]
-          }
-        )
         res.redirect(`/users/${user.id}/projects`)
       })
     })
@@ -57,20 +51,22 @@ router.get('/:projectId/edit', (req, res) => {
   const projectId = req.params.projectId;
   console.log("requested edit page");
   // res.send(`Your user ID is ${userIdToSearchDbFor}`)
+  User.findById(userId)
+    .then((user) => {
+      var foundProject = user.projects.find((project) => {
+        return project.id === projectId;
+      })
 
-    Project.findById(projectId)
-        .then((project) => {
-          console.log(userId);
-            res.render(
-                'projects/edit',
-                { project, 
-                  userId }
-            );
-        })
-        .catch((error) => {
-            console.log(`Error retrieving user with ID of ${userId}`)
-        });
+      res.render('projects/edit', {
+        userId, 
+        project: foundProject
+      })
 });
+});
+
+//======================
+// UPDATE
+//======================
 
 router.get('/:projectId/update', (req, res) => {
   const projectId = req.params.projectId;
@@ -78,24 +74,25 @@ router.get('/:projectId/update', (req, res) => {
 })
 
 
-
+//======================
+// SHOW PROJECT
+//======================
 
 router.get('/:projectId', (req, res) => {
   const userId = req.params.userId;
   const projectId = req.params.projectId;
 
-    Project.findById(projectId)
-        .then((project) => {
-          console.log(userId);
-            res.render(
-                'projects/show',
-                { project, 
-                  userId }
-            );
+    User.findById(userId)
+      .then((user) => {
+        var foundProject = user.projects.find((project) => {
+          return project.id === projectId;
         })
-        .catch((error) => {
-            console.log(`Error retrieving user with ID of ${userId}`)
-        });
+
+        res.render('projects/show', {
+          userId, 
+          project: foundProject
+        })
+  });
 });
 
 
@@ -142,6 +139,9 @@ router.put('/:projectId', (req, res) => {
     });
     arrayOfProjects = user.projects;
     foundProject.name = req.body.name;
+    foundProject.user_name = req.body.user_name;
+    foundProject.description = req.body.description;
+    foundProject.links.push(req.body.links);
 
     // then save the user and return the promise so we can chain
     // another .then() block and only use one .catch() block
