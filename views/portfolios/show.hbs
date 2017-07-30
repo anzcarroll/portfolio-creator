@@ -7,6 +7,9 @@
     <li>../{{this.imageUrl}}</li>
     <img src="https://www.jeopardy.com/Assets/jeopardy/images/home/finalj_570x317.jpg" style="width:100%;max-width:360px;">
     <li>{{this.description}}</li>
+    {{#each this.links}}
+    <li><a href="{{this.url}}">{{this.description}}</a></li>
+    {{/each}}
 </ul>
 </div>
 {{/each}}
