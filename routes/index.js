@@ -84,7 +84,8 @@ router.get('/:userName', (req, res) => {
     User.findOne({"user_name": userName})
     .then((user) => {
         res.render('portfolios/show', {
-            user
+            user,
+            portfolioHeader: `${user.first_name} ${user.last_name}'s Portfolio`
     })
         }).catch((err) => {
         res.send(`User does not exist`);
