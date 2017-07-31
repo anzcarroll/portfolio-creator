@@ -78,4 +78,17 @@ router.put('/login-submit', (req, res) => {
   })
 });
 
+
+router.get('/:userName', (req, res) => {
+    const userName = req.params.userName;
+    User.findOne({"user_name": userName})
+    .then((user) => {
+        res.render('portfolios/show', {
+            user
+    })
+        }).catch((err) => {
+        res.send(`User does not exist`);
+    })
+})
+
 module.exports = router;

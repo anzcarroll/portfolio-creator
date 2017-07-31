@@ -1,0 +1,15 @@
+<h1>{{user.first_name}} {{user.last_name}}'s Portfolio</h1>
+{{#each user.projects}}
+<div class="col s4" style="text-align:center">
+<ul>
+    <li><h3>{{this.name}}</h3></li>
+    <li>{{this.imageUrl}}</li>
+    <li>../{{this.imageUrl}}</li>
+    <img src="https://www.jeopardy.com/Assets/jeopardy/images/home/finalj_570x317.jpg" style="width:100%;max-width:360px;">
+    <li>{{this.description}}</li>
+    {{#each this.links}}
+    <li><a href="{{this.url}}">{{this.description}}</a></li>
+    {{/each}}
+</ul>
+</div>
+{{/each}}
