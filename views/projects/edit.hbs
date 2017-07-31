@@ -6,8 +6,12 @@
         <input type="text" value="{{project.name}}" name="name" placeholder="Edit project name"></div>
     <div> 
         <label>Edit project description:</label><br>
-        <input type="text" value="{{project.description}}" name="description" placeholder="Edit project description"></div>
-    {{!--<div> Image: <input type="text" value="{{project.imageUrl}}" name="imageUrl"></div>--}}
+        <input type="text" value="{{project.description}}" name="description" placeholder="Edit project description">
+     </div>
+     <div>
+         <label>Edit Image URL:</label><br>
+        <input type="text" value="{{project.imageUrl}}" name="imageUrl">
+    </div>
     {{#each links}}
     <div> 
         <label>{{this.description}}:</label><br>
