@@ -113,23 +113,23 @@ router.put('/:projectId', (req, res) => {
     foundProject.user_name = req.body.user_name;
     foundProject.description = req.body.description;
     foundProject.imageUrl = req.body.imageUrl;
-    console.log("Before:")
-    console.log(foundProject.links);
+    // console.log("Before:")
+    // console.log(foundProject.links);
     foundProject.links = [];
-    console.log("After:");
-    console.log(foundProject.links);
+    // console.log("After:");
+    // console.log(foundProject.links);
     for (var i = 0; i < req.body.linkUrl.length; i++) {
-      console.log("Add another link")
+      // console.log("Add another link")
       var newLinkUrl = req.body.linkUrl[i];
       var newLinkDescription = req.body.linkDescription[i];
       var newLink = new Link({
         url: newLinkUrl,
         description: newLinkDescription
       })
-      console.log(newLink);
+      // console.log(newLink);
       foundProject.links.push(newLink);
     }
-    console.log(foundProject.links);
+    // console.log(foundProject.links);
 
 
     // foundProject.links.link.url = req.body.link.url
