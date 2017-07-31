@@ -39,6 +39,7 @@ var UserSchema = new Schema({
     password: String,
     portfolio: PortfolioSchema,
     projects: [ProjectSchema],
+    loggedIn: false,
     job_name: String
 });
 
