@@ -2,16 +2,31 @@
 
 <form method="POST" action="/users/{{userId}}/projects">
 <div>
-    <input type="text" name="name" placeholder="Project Name">
+    <label>Project Name:</label><br>
+    <input type="text" name="name" placeholder="Give this project a name" required='true'>
 </div>
 <div>
-    <input type="text" name="description" placeholder="Description">
+    <label>Description:</label><br>
+    <input type="text" name="description" placeholder="Give your project a description" required='true'>
 </div>
-<div>
+{{!--<div>
     <input type="text" name="imageUrl" placeholder="Image URL">
+</div>--}}
+<div>
+    <label>GitHub Link URL:</label><br>
+    <input type="text" name="linkUrl" value="http://" placeholder="Github Link url" required='true'>
 </div>
 <div>
-    <input type="text" name="links" placeholder="Links">
+    <label>GitHub Description:</label><br>
+    <input type="text" name="linkDescription" placeholder="Github Link description" required='true'>
+</div>
+<div>
+    <label>Deployed App URL:</label><br>
+    <input type="text" name="linkUrl" value="http://" required='true'>
+</div>
+<div>
+    <label>Description:</label><br>
+    <input type="text" name="linkDescription" placeholder="Deployed App description" required='true'>
 </div>
 <div>
     <input type="submit" value="Create Project"  class="btn">
