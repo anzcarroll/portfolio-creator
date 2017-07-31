@@ -25,7 +25,11 @@ router.get('/', (req, res) => {
 //======================
 // NEW
 //======================
-//this is our index home page
+//this is our home page
+//======================
+// CREATE
+//======================
+// this is our home page
 
 
 
@@ -37,7 +41,7 @@ router.get('/', (req, res) => {
 // Create a GET show route "/:id" that renders the users's show page
 router.get('/:userId', (req, res) => {
   const userIdToSearchDbFor = req.params.id
-  // res.send(`Your user ID is ${userIdToSearchDbFor}`)
+//  res.send(`Your user ID is ${userIdToSearchDbFor}`)
 
     User.findById(userIdToSearchDbFor)
         .then((user) => {
@@ -53,10 +57,6 @@ router.get('/:userId', (req, res) => {
 
 
 //======================
-// CREATE
-//======================
-
-//======================
 // UPDATE
 //======================
 
@@ -64,8 +64,8 @@ router.get('/:userId', (req, res) => {
 //NEED TO UPDATE ALL USER INFO 
 //THEN RENDER SHOW PAGE OF THAT USERS ID+INFO
  router.put('/:userId', (req, res) => {
-    
-    const userIdToUpdate = req.params.userId;
+    const userIdToUpdate = req.params.user.id;
+     console.log("found" + userIdToUpdate)
     const updatedUserInfo = req.body;
     console.log("found" + userIdToUpdate)
 
@@ -75,16 +75,16 @@ router.get('/:userId', (req, res) => {
         { new: true } // <-- DON'T FORGET THIS!!!
     )
         .then((user) => {
-            console.log(`User with ID of ${userId} updated!`);
+            console.log(`User with ID of ${userIdToUpdate} updated!`);
 
             res.render(
-                'users/show',
+                ':userId/show',
                 { user,
                   updatedUserInfo }
             )
         })
         .catch((error) => {
-            console.log(`User with ID of ${userId} failed to update!`)
+            console.log(`User with ID of ${userIdToUpdate} failed to update!`)
             console.log(error);
         })
 
