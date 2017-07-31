@@ -6,7 +6,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
   </head>
 
-  <body>
+<header>
+{{#if login}}
   <nav>
     <div class="nav-wrapper">
       <a href="/" class="brand-logo"><img src="/img/Logo-inverted.jpg" style="height:50px;padding-top:.5em;"></a>
@@ -17,6 +18,25 @@
       </ul>
     </div>
   </nav>
+{{else}}
+<nav>
+    <div class="nav-wrapper">
+      <a href="../users/{{user.id}}/projects" class="brand-logo"><img src="/img/Logo-inverted.jpg" style="height:50px;padding-top:.5em;"></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/users/{{user.id}}">Account</a></li>
+        <li><a href="/login">Logout</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="#">Browse</a></li>
+      </ul>
+    </div>
+  </nav>
+{{/if}}
+
+</header>
+
+<body>
+  
+
     <div class="row body-row">
     {{{body}}}
     </div>
