@@ -1,13 +1,26 @@
-<h1>My Projects Dashboard</h1>
+<h1>My Projects Dashboard <a href="/users/{{user.id}}/edit" class="right-align"><button class="btn secondary">Edit my Profile</button></a> </h1>
 <a href="/users/{{userId}}/projects/new"><button class="btn">Create New Project</button></a>
-<a href="/users/{{user.id}}/edit"><button class="btn secondary">Edit my Profile</button></a>
+
 
 <div id="list">
 
     {{#each arrayOfProjects}}
     <div class="project">
-        <h2>{{this.name}}</h2>
-        <ul>
+        <div class="row">
+        <div class="project-name col s8">
+            <h2>{{this.name}}</h2>
+        </div>
+            <div class="right-align col s4" id="PortfolioIndexDropdown">
+                <!-- Dropdown Trigger -->
+                    <a class='dropdown-button btn' href='#' data-activates='dropdown1'>Options:</a>
+                <!-- Dropdown Structure -->
+                    <ul id='dropdown1' class='dropdown-content'>
+                        <li><a href="/users/{{../user.id}}/projects/{{this.id}}/edit">Edit </a></li>
+                        <li><a href="/users/{{../user.id}}/projects/{{this._id}}">View </a></li>
+                        <li><a href="/users/{{../user.id}}/projects/{{this._id}}/delete">Delete</a></li>
+                    </ul>
+            </div>
+        </div>
 
         <li>User Name: {{this.user_name}}</li>
         <li>Description: {{this.description}}</li>
@@ -18,10 +31,8 @@
                 <li><a href="{{this.url}}">{{this.description}}</a></li>
             </ul>
             {{/each}}
-        </li>
-        <a href="/users/{{../user.id}}/projects/{{this.id}}/edit"><button class="btn">Edit {{this.name}}</button></a>
-        <a href="/users/{{../user.id}}/projects/{{this._id}}"><button class="btn">View {{this.name}}</button></a>
-        <a href="/users/{{../user.id}}/projects/{{this._id}}/delete"><button class="btn delete">Delete {{this.name}}</button></a>
+
+      
         
 
     </ul>
