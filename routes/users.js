@@ -56,19 +56,49 @@ router.get('/:userId', (req, res) => {
 // CREATE
 //======================
 
+//======================
+// UPDATE
+//======================
 
+///NOT FINDING ROUTE TO THIS IN BROWSER,
+//NEED TO UPDATE ALL USER INFO 
+//THEN RENDER SHOW PAGE OF THAT USERS ID+INFO
+ router.put('/:userId', (req, res) => {
+    
+    const userIdToUpdate = req.params.userId;
+    const updatedUserInfo = req.body;
+    console.log("found" + userIdToUpdate)
+
+    User.findByIdAndUpdate(
+        userIdToUpdate,
+        updatedUserInfo,
+        { new: true } // <-- DON'T FORGET THIS!!!
+    )
+        .then((user) => {
+            console.log(`User with ID of ${userId} updated!`);
+
+            res.render(
+                'users/show',
+                { user,
+                  updatedUserInfo }
+            )
+        })
+        .catch((error) => {
+            console.log(`User with ID of ${userId} failed to update!`)
+            console.log(error);
+        })
+
+});
 
 
 //======================
 // EDIT
 //======================
 router.get('/:userId/edit', (req, res) => {
-
     var userId = req.params.userId;
 
     User.findById(userId)
         .then((user) => {
-            console.log(`I can render this ${userId}`)
             res.render(
                 'users/edit',
                 { user }
@@ -80,9 +110,6 @@ router.get('/:userId/edit', (req, res) => {
 });
 
 
-//======================
-// UPDATE
-//======================
 
 
 
