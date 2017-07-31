@@ -67,7 +67,7 @@ router.get('/:userId', (req, res) => {
  router.put('/:userId', (req, res) => {
     const userIdToUpdate = req.params.userId;
     const infoToUpdate = req.body;
-    User.findByIdAndUpdate(userIdToUpdate,infoToUpdate,)
+    User.findByIdAndUpdate(userIdToUpdate,infoToUpdate)
     .then((user) => {
             console.log(`User with ID of ${userIdToUpdate} updated!`);
             res.redirect(`/users/${userIdToUpdate}`)
