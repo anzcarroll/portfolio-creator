@@ -12,7 +12,6 @@ var LinkSchema = new Schema({
 
 var ProjectSchema = new Schema({
     name: String,
-    user_name: String,
     description: String,
     imageUrl: String,
     links: [LinkSchema],
@@ -26,7 +25,6 @@ var PortfolioSchema = new Schema({
     created_at: Date,
     updated_at: Date,
     links: [LinkSchema],
-    user_name: String
 })
 
 var UserSchema = new Schema({
