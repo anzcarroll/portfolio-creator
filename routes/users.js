@@ -66,60 +66,17 @@ router.get('/:userId', (req, res) => {
 //THEN RENDER SHOW PAGE OF THAT USERS ID+INFO
  router.put('/:userId', (req, res) => {
     const userIdToUpdate = req.params.userId;
-     console.log("found" + userIdToUpdate)
-     const infoToUpdate = req.body;
-     console.log("found", infoToUpdate)
-    // const updatedFirstName = req.params.first_name;
-    // const updatedLastName = req.params.last_name;
-    // const updatedEmail = req.params.email;
-    // const updatedAge = req.params.age;
-    // const updatedGender = req.params.gender;
-    // const updatedUserName = req.params.user_name;
-    // const updatedPassword = req.params.password;
-    // const updatedPortfolioLink = req.params.portfolio;
-    // const updatedJobTitle = req.params.job_name;
-
-    User.findByIdAndUpdate(
-        userIdToUpdate,
-        infoToUpdate,
-        // updatedFirstName,
-        // updatedLastName,
-        // updatedEmail,
-        // updatedAge,
-        // updatedGender,
-        // updatedUserName,
-        // updatedPassword,
-        // updatedPortfolioLink,
-        // updatedJobTitle, 
-       // { new: true } // <-- DON'T FORGET THIS!!!
-    )
-        .then((user) => {
+    const infoToUpdate = req.body;
+    User.findByIdAndUpdate(userIdToUpdate,infoToUpdate,)
+    .then((user) => {
             console.log(`User with ID of ${userIdToUpdate} updated!`);
-
-            res.redirect(
-                `/users/${userIdToUpdate}`)
-                // {   user,
-                //      userIdToUpdate,
-                //     infoToUpdate,
-
-                //     // updatedFirstName,
-                //     // updatedLastName,
-                //     // updatedEmail,
-                //     // updatedAge,
-                //     // updatedGender,
-                //     // updatedUserName,
-                //     // updatedPassword,
-                //     // updatedPortfolioLink,
-                //     // updatedJobTitle 
-                // })
-            
+            res.redirect(`/users/${userIdToUpdate}`)
         })
         .catch((error) => {
             console.log(`User with ID of ${userIdToUpdate} failed to update!`)
             console.log(error);
         })
-
-});
+ })
 
 
 //======================
