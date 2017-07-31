@@ -1,5 +1,5 @@
 const express = require('express');
-const router = express.Router({mergeParams: true}); 
+const router = express.Router(); 
 const mongoose = require('mongoose');
 
 const NewUserSchema = require('../models/user.js')
@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
     const userEmail = req.body.email;
     const userPassword = req.body.password;
-    User.findOne({"email": userEmail}, ).then((user) => {
+    User.findOne({"email": userEmail}).then((user) => {
         if (user === null) {
             const newUser = new NewUserSchema(req.body);
             newUser.save()
@@ -54,7 +54,7 @@ router.put('/login-submit', (req, res) => {
   console.log(`Email: ${userEmail}`);
   console.log(`Password: ${userPassword}`)
 
- User.findOne({"email": userEmail}, ).then((user) => {
+ User.findOne({"email": userEmail}).then((user) => {
     console.log(`This user's object: ${user}`);
     console.log(`This user's password: ${user.password}`);
     arrayOfProjects = user.projects;
