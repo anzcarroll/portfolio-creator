@@ -1,12 +1,20 @@
 <h1>Edit {{user.first_name}}'s Project: {{project.name}}</h1>
 <div class="row">
 <form action="/users/{{userId}}/projects/{{project.id}}?_method=PUT" method="POST">
-    <div> <input type="text" value="{{project.name}}" name="name" placeholder="Name"></div>
-    <div> <input type="text" value="{{project.description}}" name="description" placeholder="Description"></div>
+    <div> 
+        <label>Project Name:</label><br>
+        <input type="text" value="{{project.name}}" name="name" placeholder="Edit project name"></div>
+    <div> 
+        <label>Edit project description:</label><br>
+        <input type="text" value="{{project.description}}" name="description" placeholder="Edit project description"></div>
     {{!--<div> Image: <input type="text" value="{{project.imageUrl}}" name="imageUrl"></div>--}}
     {{#each links}}
-    <div> <input type="text" value="{{this.url}}" name="linkUrl" placeholder="Link url" ></div>
-    <div> <input type="text" value="{{this.description}}" name="linkDescription" placeholder="Link description"></div>
+    <div> 
+        <label>{{this.description}}:</label><br>
+        <input type="text" value="{{this.url}}" name="linkUrl" placeholder="Edit link url" ></div>
+    <div> 
+        <label>Description:</label><br>
+        <input type="text" value="{{this.description}}" name="linkDescription" placeholder="Edit link description"></div>
     {{/each}}
     <div><input type="submit" value="Update Project" class="btn"></div>
 </form>
@@ -15,17 +23,3 @@
 <div style="padding-top: 10px">
 <a href="/users/{{user.id}}/projects"><button class="btn secondary">Cancel</button></a>
 </div>
-<div>Project ID: {{project.id}}</div>
-<div>Project Name: {{project.name}}</div>
-<div>Project username: {{project.user_name}}</div>
-<div>Project description: {{project.description}}</div>
-<div>Project Image URL: {{project.imageUrl}}</div>
-<div>Project Links: {{project.links}}</div>
-{{#each project.links}}
-<div>Link URL: {{this.url}}</div>
-<div>Link Description: {{this.description}}</div>
-{{/each}}
-<div>Projects: created at: {{project.created_at}}</div>
-<div>Projects: updated at: {{project.updated_at}}</div>
-</div>
-{{length}}
