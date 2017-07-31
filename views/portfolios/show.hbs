@@ -3,13 +3,13 @@
 </div>
 {{#each user.projects}}
 <div class="col s4" style="text-align:center">
-<ul>
-    <li><h3>{{this.name}}</h3></li>
-    <img src="https://www.jeopardy.com/Assets/jeopardy/images/home/finalj_570x317.jpg" style="width:100%;max-width:360px;">
-    <li>{{this.description}}</li>
+<h3>{{this.name}}</h3>
+    <img src="{{this.imageUrl}}" style="height:100px;">
+    <p>{{this.description}}</br>
     {{#each this.links}}
-    <li><a href="{{this.url}}">{{this.description}}</a></li>
+    <a href="{{this.url}}">{{this.description}}</a>
     {{/each}}
-</ul>
+    </p>
+
 </div>
 {{/each}}

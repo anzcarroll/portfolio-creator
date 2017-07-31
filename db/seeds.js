@@ -101,7 +101,7 @@ var JoeyJeopardy = new Project({
     name: 'Jeopardy',
     user_name: 'TheRealDannyHurley',
     description: 'Prove you\'re smarter than your friends',
-    imageUrl: '../public/img/joeyhurleyjeopardy.png',
+    imageUrl: 'https://www.jeopardy.com/Assets/jeopardy/images/home/finalj_570x317.jpg',
     links: [JoeyPortfolioLinkJeopardy, JoeyJeopardyLinkGitHub],
     created_at: '',
     updated_at: ''
@@ -111,7 +111,7 @@ var JoeyConnectFour = new Project({
     name: 'ConnectFour',
     user_name: 'TheRealDannyHurley',
     description: 'Prove you\'re faster than your friends',
-    imageUrl: '../public/img/joeyhurleyjeopardy.png',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/en/thumb/7/79/Connect_4_Board_and_Box.jpg/250px-Connect_4_Board_and_Box.jpg',
     links: [JoeyPortfolioLinkJeopardy, JoeyJeopardyLinkGitHub],
     created_at: '',
     updated_at: ''
