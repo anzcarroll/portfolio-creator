@@ -12,9 +12,9 @@
         </div>
             <div class="right-align col s4" id="PortfolioIndexDropdown">
                 <!-- Dropdown Trigger -->
-                    <a class='dropdown-button btn' href='#' data-activates='dropdown1'>Options:</a>
+                    <a class='dropdown-button btn' href='#' data-activates='dropdown{{@index}}'>Options:</a>
                 <!-- Dropdown Structure -->
-                    <ul id='dropdown1' class='dropdown-content'>
+                    <ul id='dropdown{{@index}}' class='dropdown-content'>
                         <li><a href="/users/{{../user.id}}/projects/{{this.id}}/edit">Edit </a></li>
                         <li><a href="/users/{{../user.id}}/projects/{{this._id}}">View </a></li>
                         <li><a href="/users/{{../user.id}}/projects/{{this._id}}/delete" class="red">Delete</a></li>
