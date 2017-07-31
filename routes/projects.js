@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 
 var Project = require("../models/project")
 var User = require("../models/user");
+var Link = require("../models/link")
 
 
 //======================
@@ -56,11 +57,19 @@ router.get('/:projectId/edit', (req, res) => {
       var foundProject = user.projects.find((project) => {
         return project.id === projectId;
       })
+      var arrayOfLinks = [];
+      for (var i =0; i < foundProject.links.length; i++) {
+          arrayOfLinks.push(foundProject.links.url);
+      }
+      var length = arrayOfLinks.length
 
       res.render('projects/edit', {
         user,
         userId, 
-        project: foundProject
+        project: foundProject, 
+        links: foundProject.links,
+        arrayOfLinks,
+        length
       })
 });
 });
@@ -104,6 +113,25 @@ router.put('/:projectId', (req, res) => {
     foundProject.user_name = req.body.user_name;
     foundProject.description = req.body.description;
     foundProject.imageUrl = req.body.imageUrl;
+    console.log("Before:")
+    console.log(foundProject.links);
+    foundProject.links = [];
+    console.log("After:");
+    console.log(foundProject.links);
+    for (var i = 0; i < req.body.linkUrl.length; i++) {
+      console.log("Add another link")
+      var newLinkUrl = req.body.linkUrl[i];
+      var newLinkDescription = req.body.linkDescription[i];
+      var newLink = new Link({
+        url: newLinkUrl,
+        description: newLinkDescription
+      })
+      console.log(newLink);
+      foundProject.links.push(newLink);
+    }
+    console.log(foundProject.links);
+
+
     // foundProject.links.link.url = req.body.link.url
     // foundProject.links.push(req.body.links);
 
@@ -112,16 +140,14 @@ router.put('/:projectId', (req, res) => {
     return user.save();
 
   }).then((user) => {
-    console.log(`updated user with ID of ${user._id}`);
-
-    res.render(
-        'projects/index',
-        {
-         userId: user._id,
+    // console.log(`updated user with ID of ${user._id}`);
+    res.render('projects/index', {
+          userId: user._id,
           user,
-          arrayOfProjects
-        },
-    );
+          arrayOfProjects,
+          links: user.projects.links
+        }
+    )
   }).catch((error) => {
     console.log(`Failed to update project with ID of ${projectId}`);
     console.log(error);
@@ -170,8 +196,8 @@ router.get('/:projectId/delete', (req, res) => {
           userId: user._id,
           user,
           arrayOfProjects
-        },
-    );
+        }
+    )
   }).catch((error) => {
     console.log(`Failed to delete user with ID of ${userId}`);
     console.log(error);

@@ -17,7 +17,7 @@ var User = require('./routes/users');
 
 var app = express();
 
-app.use(methodOverride ('_method'));
+
 // mongoose.connect('mongodb://localhost/portfolio-creator');
 
 // view engine setup
@@ -29,9 +29,10 @@ app.set('view engine', 'hbs');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(methodOverride ('_method'));
 
 const projectsRoute = require('./routes/projects.js');
 app.use('/users/:userId/projects', projectsRoute);
@@ -41,35 +42,6 @@ app.use('/users', usersRoute);
 
 const indexRoute = require('./routes/index.js');
 app.use('/', indexRoute);
-
-
-
-
-
-
-
-// app.get('/', (req, res) => {
-//     res.render('users/:id/new');
-// });
-
-
-
-
-
-
-// app.post('/', function(req, res){
-//      var u = new User({
-//         email: req.body.email,
-//         password: req.body.password
-//     });
-
-//     u.save(function(err) {
-//         if (err)
-//            throw err;
-//         else 
-//            console.log('save user successfully...');
-//     });
-// });
 
 
 // catch 404 and forward to error handler
