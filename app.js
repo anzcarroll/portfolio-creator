@@ -17,6 +17,13 @@ var User = require('./routes/users');
 
 var app = express();
 
+var userNotLoggedIn = true;
+
+var logOut = function() {
+    userNotLoggedIn = true;
+    console.log("clicked log out, userLoggedIn is: " + userNotLoggedIn)
+}
+
 
 // mongoose.connect('mongodb://localhost/portfolio-creator');
 
