@@ -34,8 +34,10 @@ router.post('/', (req, res) => {
 
     User.findById(userId).then((user) => {
       const newProject = new Project(newProjectInfo);
-      user.projects.push(newProject);
+      console.log("new project id" + newProject.id);
       newProject.links = [];
+      console.log(req.body);
+      console.log(req.body.linkUrl);
       for (var i = 0; i < req.body.linkUrl.length; i++) {
       // console.log("Add another link")
       var newLinkUrl = req.body.linkUrl[i];
@@ -45,7 +47,8 @@ router.post('/', (req, res) => {
         description: newLinkDescription
       })
       newProject.links.push(newLink);
-      }
+    }
+    user.projects.push(newProject);
 
       return user.save();
       }).then((user) => {
