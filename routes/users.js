@@ -43,7 +43,7 @@ router.get('/:userId', (req, res) => {
   const userIdToSearchDbFor = req.params.userId
 //  res.send(`Your user ID is ${userIdToSearchDbFor}`)
 
-    User.findById(userIdToSearchDbFor,)
+    User.findById(userIdToSearchDbFor)
         .then((user) => {
             console.log(user)
             res.render(
