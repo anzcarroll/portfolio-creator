@@ -117,6 +117,16 @@ var JoeyConnectFour = new Project({
     updated_at: ''
 });
 
+var JoeyBattleship = new Project({
+    name: 'BattleShip',
+    user_name: 'TheRealDannyHurley',
+    description: 'Prove you\'re faster than your friends',
+    imageUrl: 'https://ubistatic19-a.akamaihd.net/ubicomstatic/en-US/global/media/Battleship-ubicom-VIDEO-launch_trailer_2016_08_02-712x712_Desktop_261122.jpg',
+    links: [JoeyPortfolioLinkJeopardy, JoeyJeopardyLinkGitHub],
+    created_at: '',
+    updated_at: ''
+});
+
 var JoeyPortfolio = new Portfolio({
     name: 'Joey Hurley\'s Portfolio',
     projects: [JoeyJeopardy],
@@ -137,7 +147,7 @@ var Joey = new User({
     user_name: 'TheRealDannyHurley',
     password: 'badasskittens',
     portfolio: JoeyPortfolio,
-    projects: [JoeyJeopardy, JoeyConnectFour],
+    projects: [JoeyJeopardy, JoeyConnectFour, JoeyBattleship],
     job_name: "Web Developer"
 });
 
@@ -167,6 +177,10 @@ JoeyJeopardy.save( (err) => {
 JoeyConnectFour.save( (err) => {
     if (err) console.log('Joey ConnectFour Project error' + err);
     console.log('Joey ConnectFour Project created');
+})
+JoeyBattleship.save( (err) => {
+    if (err) console.log('Joey ConnectFour Project error' + err);
+    console.log('Joey Battleship Project created');
 })
 JoeyPortfolio.save( (err) => {
     if (err) console.log('Joey Portfolio error' + err);

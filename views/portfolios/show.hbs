@@ -1,15 +1,20 @@
+
 <div class="row">
     <h1>{{portfolioHeader}}</h1>
 </div>
+<div class="row">
 {{#each user.projects}}
-<div class="col s4" style="text-align:center">
+
+<div class="col s12 m4" style="text-align:center">
 <h3>{{this.name}}</h3>
     <img src="{{this.imageUrl}}" style="height:100px;">
     <p>{{this.description}}</br>
     {{#each this.links}}
     <a href="{{this.url}}">{{this.description}}</a>
+    <br>
     {{/each}}
     </p>
 
 </div>
 {{/each}}
+</div>
