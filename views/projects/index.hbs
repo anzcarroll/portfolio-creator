@@ -7,20 +7,7 @@
     {{#each arrayOfProjects}}
     <div class="project">
         <div class="row">
-        <div class="project-name col s8">
             <h2>{{this.name}}</h2>
-        </div>
-            <div class="right-align col s4" id="PortfolioIndexDropdown">
-                <!-- Dropdown Trigger -->
-                    <a class='dropdown-button btn' href='#' data-activates='dropdown{{@index}}'>Options:</a>
-                <!-- Dropdown Structure -->
-                    <ul id='dropdown{{@index}}' class='dropdown-content'>
-                        <li><a href="/users/{{../user.id}}/projects/{{this.id}}/edit">Edit </a></li>
-                        <li><a href="/users/{{../user.id}}/projects/{{this._id}}">View </a></li>
-                        <li><a href="/users/{{../user.id}}/projects/{{this._id}}/delete" class="red">Delete</a></li>
-                    </ul>
-            </div>
-        </div>
 
         <li>User Name: {{this.user_name}}</li>
         <li>Description: {{this.description}}</li>
@@ -38,5 +25,8 @@
 
     </ul>
     </div>
+    <a href="/users/{{../user.id}}/projects/{{this.id}}/edit"><button class="btn">Edit</button></a>
+    <a href="/users/{{../user.id}}/projects/{{this._id}}"><button class="btn secondary">View</button></a>
+    <a href="/users/{{../user.id}}/projects/{{this._id}}/delete"><button class="btn delete">Delete</button></a>
     {{/each}}
 </div>
