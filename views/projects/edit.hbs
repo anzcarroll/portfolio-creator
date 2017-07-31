@@ -5,10 +5,11 @@
     <div><input type="text" value="{{project.user_name}}" name="user_name"></div>
     <div><input type="text" value="{{project.description}}" name="description"></div>
     <div><input type="text" value="{{project.imageUrl}}" name="imageUrl"></div>
-    {{#each project.links}}
-    <div><input type="text" value="{{this.url}}" name="link.url"></div>
-    <div><input type="text" value="{{this.description}}" name="link.description"></div>
+    {{#each links}}
+    <div><input type="text" value="{{this.url}}" name="linkUrl"></div>
+    <div><input type="text" value="{{this.description}}" name="linkDescription"></div>
     {{/each}}
+    <div><input type="text" value="{{length}}" name="length"></div>
     <div><input type="submit" value="Update Project" class="btn"></div>
 </form>
 
@@ -29,3 +30,4 @@
 <div>Projects: created at: {{project.created_at}}</div>
 <div>Projects: updated at: {{project.updated_at}}</div>
 </div>
+{{length}}
