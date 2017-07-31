@@ -1,17 +1,11 @@
-<h1>Edit {{user.first_name}}'s Project: {{project.name}}</h1>
-<div class="row">
+<h2>{{user.first_name}}'s</h2>
 <form action="/users/{{userId}}/projects/{{project.id}}?_method=PUT" method="POST">
-    <div> 
-        <label>Project Name:</label><br>
-        <input type="text" value="{{project.name}}" name="name" placeholder="Edit project name"></div>
-    <div> 
-        <label>Edit project description:</label><br>
-        <input type="text" value="{{project.description}}" name="description" placeholder="Edit project description">
-     </div>
-     <div>
-         <label>Edit Image URL:</label><br>
-        <input type="text" value="{{project.imageUrl}}" name="imageUrl">
-    </div>
+<h4>Project details editor for:</h4>
+<div class="row">
+
+    <div> <input type="text" value="{{project.name}}" name="name" placeholder="Name"> </div>
+    <div> <input type="text" value="{{project.description}}" name="description" placeholder="Description"></div>
+    {{!--<div> Image: <input type="text" value="{{project.imageUrl}}" name="imageUrl"></div>--}}
     {{#each links}}
     <div> 
         <label>{{this.description}}:</label><br>
