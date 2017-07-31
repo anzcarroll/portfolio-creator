@@ -40,11 +40,12 @@ router.get('/', (req, res) => {
 //======================
 // Create a GET show route "/:id" that renders the users's show page
 router.get('/:userId', (req, res) => {
-  const userIdToSearchDbFor = req.params.id
+  const userIdToSearchDbFor = req.params.userId
 //  res.send(`Your user ID is ${userIdToSearchDbFor}`)
 
     User.findById(userIdToSearchDbFor)
         .then((user) => {
+            console.log(user)
             res.render(
                 'users/show',
                 { user }
@@ -64,24 +65,54 @@ router.get('/:userId', (req, res) => {
 //NEED TO UPDATE ALL USER INFO 
 //THEN RENDER SHOW PAGE OF THAT USERS ID+INFO
  router.put('/:userId', (req, res) => {
-    const userIdToUpdate = req.params.user.id;
+    const userIdToUpdate = req.params.userId;
      console.log("found" + userIdToUpdate)
-    const updatedUserInfo = req.body;
-    console.log("found" + userIdToUpdate)
+     const infoToUpdate = req.body;
+     console.log("found", infoToUpdate)
+    // const updatedFirstName = req.params.first_name;
+    // const updatedLastName = req.params.last_name;
+    // const updatedEmail = req.params.email;
+    // const updatedAge = req.params.age;
+    // const updatedGender = req.params.gender;
+    // const updatedUserName = req.params.user_name;
+    // const updatedPassword = req.params.password;
+    // const updatedPortfolioLink = req.params.portfolio;
+    // const updatedJobTitle = req.params.job_name;
 
     User.findByIdAndUpdate(
         userIdToUpdate,
-        updatedUserInfo,
-        { new: true } // <-- DON'T FORGET THIS!!!
+        infoToUpdate,
+        // updatedFirstName,
+        // updatedLastName,
+        // updatedEmail,
+        // updatedAge,
+        // updatedGender,
+        // updatedUserName,
+        // updatedPassword,
+        // updatedPortfolioLink,
+        // updatedJobTitle, 
+       // { new: true } // <-- DON'T FORGET THIS!!!
     )
         .then((user) => {
             console.log(`User with ID of ${userIdToUpdate} updated!`);
 
-            res.render(
-                ':userId/show',
-                { user,
-                  updatedUserInfo }
-            )
+            res.redirect(
+                `/users/${userIdToUpdate}`)
+                // {   user,
+                //      userIdToUpdate,
+                //     infoToUpdate,
+
+                //     // updatedFirstName,
+                //     // updatedLastName,
+                //     // updatedEmail,
+                //     // updatedAge,
+                //     // updatedGender,
+                //     // updatedUserName,
+                //     // updatedPassword,
+                //     // updatedPortfolioLink,
+                //     // updatedJobTitle 
+                // })
+            
         })
         .catch((error) => {
             console.log(`User with ID of ${userIdToUpdate} failed to update!`)

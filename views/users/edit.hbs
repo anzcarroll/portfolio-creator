@@ -1,6 +1,6 @@
 <h1>Edit My Info Page</h1>
 <div> Your unique UserId is: {{user.id}}</div>
-<form action="/users/{{user.id}}?_method=PUT">    
+<form action="/users/{{user.id}}?_method=PUT" method="POST">    
     <div>First Name:<input type="text" value="{{user.first_name}}" name="first_name"></div>
     <div>Last Name:<input type="text" value="{{user.last_name}}" name="last_name"></div>
     <div>Email:<input type="text" value="{{user.email}}" name="email"></div>
