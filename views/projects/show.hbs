@@ -1,17 +1,40 @@
 <h1>My Project:</h1>
 
 <div>{{project.id}}</div>
-<div>{{project.name}}</div>
-<div>{{project.user_name}}</div>
-<div>{{project.description}}</div>
-<div>{{project.imageUrl}}</div>
-<div>{{#each project.links}}
-    <div>{{this.url}}</div>
-    <div>{{this.description}}</div>
+<div>
+     <label>Project Name:</label><br>
+     {{project.name}}
+</div>
+<div>
+     <label>Description:</label><br>
+    {{project.description}}
+</div>
+<div>
+     <label>Image URL:</label><br>
+    {{project.imageUrl}}
+</div>
+
+<div>
+    {{#each project.links}}
+    <div>
+        <label>Description of URL:</label><br>
+        {{this.description}}
+    </div>
+    <div>
+        <label>URL:</label><br>
+        {{this.url}}
+    </div>
+    
     {{/each}}
 </div>
-<div>{{project.created_at}}</div>
-<div>{{project.updated_at}}</div>
+<div>
+    <label>Created At:</label><br>
+    {{project.created_at}}
+</div>
+<div>
+    <label>Updated At:</label><br>
+    {{project.updated_at}}
+</div>
 <a href="/users/{{userId}}/projects/{{project.id}}/edit"><button class="btn">Edit My Project</button></a>
 <a href="/users/{{userId}}/projects/{{project._id}}/delete"><button class="btn delete">Delete {{project.name}}</button></a>
 <a href="/users/{{userId}}/projects"><button class="btn secondary">Go back</button></a>
