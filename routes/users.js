@@ -87,10 +87,9 @@ router.get('/:userId/edit', (req, res) => {
 
     User.findById(userId)
         .then((user) => {
-            res.render(
-                'users/edit',
-                { user }
-            );
+            res.render('users/edit', { 
+                user 
+            })
         })
         .catch((error) => {
             console.log(`Error rendering edit form for user with ID of ${userId}`)
