@@ -2,17 +2,26 @@
 <form action="/users/{{userId}}/projects/{{project.id}}?_method=PUT" method="POST">
 <h4>Project details editor for:</h4>
 <div class="row">
-
-    <div> <input type="text" value="{{project.name}}" name="name" placeholder="Name"> </div>
-    <div> <input type="text" value="{{project.description}}" name="description" placeholder="Description"></div>
-    {{!--<div> Image: <input type="text" value="{{project.imageUrl}}" name="imageUrl"></div>--}}
+    <div> 
+        <label>Project Name:</label><br>
+        <input type="text" value="{{project.name}}" name="name" placeholder="Edit project name"></div>
+    <div> 
+        <label>Edit project description:</label><br>
+        <input type="text" value="{{project.description}}" name="description" placeholder="Edit project description">
+    </div>
+    <div>
+        <label>Edit Image URL:</label><br>
+        <input type="text" value="{{project.imageUrl}}" name="imageUrl">
+    </div>
     {{#each links}}
     <div> 
         <label>{{this.description}}:</label><br>
         <input type="text" value="{{this.url}}" name="linkUrl" placeholder="Edit link url" ></div>
     <div> 
         <label>Description:</label><br>
-        <input type="text" value="{{this.description}}" name="linkDescription" placeholder="Edit link description"></div>
+        <input type="text" value="{{this.description}}" name="linkDescription" placeholder="Edit link description">
+    </div>
+
     {{/each}}
     <div><input type="submit" value="Update Project" class="btn"></div>
 </form>
