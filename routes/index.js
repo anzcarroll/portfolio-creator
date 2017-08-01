@@ -7,11 +7,16 @@ var Project = require("../models/project")
 var User = require("../models/user");
 
 router.get('/', (req, res) => {
+    userNotLoggedIn = true;
     console.log("im loading indexUser")
-    res.render('index');
+    res.render('index', {
+        userNotLoggedIn
+    });
 })
 
-
+//===================================
+// CREATE NEW USER
+//===================================
 router.post('/', (req, res) => {
     const userEmail = req.body.email;
     const userPassword = req.body.password;
@@ -20,7 +25,9 @@ router.post('/', (req, res) => {
             const newUser = new NewUserSchema(req.body);
             newUser.save()
                     .then((user) => {
-                        res.render(`users/show`, { user } );
+                        res.render(`users/show`, { 
+                            user,
+                     } );
                     })
                     .catch((error) => {
                         console.log('Error saving new user to database!');
@@ -41,11 +48,17 @@ router.post('/', (req, res) => {
 });
 
 router.get('/about', (req, res) => {
-    res.render('about');
+    userNotLoggedIn = true;
+    res.render('about', {
+        userNotLoggedIn
+    });
 })
 
 router.get('/login', (req, res) => {
-    res.render('login');
+    userNotLoggedIn = true;
+    res.render('login', {
+        userNotLoggedIn
+    });
 })
 
 router.put('/login-submit', (req, res) => {
@@ -62,7 +75,7 @@ router.put('/login-submit', (req, res) => {
             res.render('projects/index', {
                 userId: user._id,
                 user, 
-                arrayOfProjects
+                arrayOfProjects,
             })
         } else {
             res.render('login', {

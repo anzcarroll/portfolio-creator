@@ -19,7 +19,8 @@ nav {
       color: #3ea9f0!important
 }
 .delete {
-  background-color: #b40000!important;
+  color: #b40000!important;
+  background-color: #fff!important;
 }
 .nav-wrapper {
   padding-left:1em;
