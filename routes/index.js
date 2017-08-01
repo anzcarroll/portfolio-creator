@@ -78,13 +78,17 @@ router.put('/login-submit', (req, res) => {
                 arrayOfProjects,
             })
         } else {
+            userNotLoggedIn = true;
             res.render('login', {
+                userNotLoggedIn,
                 errorMessage: `Incorrect Password`
             })
         } 
     })
     .catch((error) => {
+                userNotLoggedIn = true;
                 res.render('login', {
+                userNotLoggedIn,
                 errorMessage: `Email Address does not exist`
   });
     
