@@ -100,8 +100,10 @@ router.get('/:userName', (req, res) => {
     const userName = req.params.userName;
     User.findOne({"user_name": userName})
     .then((user) => {
+        userNotLoggedIn = true;
         res.render('portfolios/show', {
             user,
+            userNotLoggedIn,
             portfolioHeader: `${user.first_name} ${user.last_name}'s Portfolio`
     })
         }).catch((err) => {

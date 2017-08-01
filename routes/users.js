@@ -59,11 +59,9 @@ router.get('/:userId', (req, res) => {
     User.findById(userIdToSearchDbFor)
         .then((user) => {
             console.log(user)
-            userNotLoggedIn = true;
             res.render(
                 'users/show',
-                { user,
-                userNotLoggedIn }
+                { user }
             );
         })
         .catch((error) => {
