@@ -8,19 +8,21 @@
     <div class="project">
         <div class="row">
             <h2>{{this.name}}</h2>
-
-        <li>User Name: {{this.user_name}}</li>
-        <li>Description: {{this.description}}</li>
-        <li>Image URL: {{this.imageUrl}}</li>
-        {{!--<div>this.imageUrl--}}
-        <li>Links: {{#each this.links}}
-            <ul>
-                    
-                <li><a href="{{this.url}}">{{this.description}}</a></li>
-            </ul>
-            {{/each}}
-
-      
+        <div>
+            <label>Description:</label><br>
+            {{this.description}}
+        </div><br>
+        <div>
+            <label>Featured Image:</label><br>
+            <img src="{{this.imageUrl}}" style="height:100px;">
+        </div><br>
+        {{#each this.links}}
+        <div>
+            <label>{{this.description}}:</label><br>
+            <a href="{{this.url}}">{{this.url}}</a>
+        </div><br>
+        {{/each}}
+        {{!--<div>this.imageUrl--}}     
         
 
     </ul>
