@@ -26,8 +26,9 @@ router.get('/', (req, res) => {
         return user.projects.length > 0
     })
 
-
+    userNotLoggedIn = true;
     res.render('users/index', {
+        userNotLoggedIn,
         users,
         usersWithProjects
     });
