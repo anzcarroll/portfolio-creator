@@ -19,7 +19,19 @@ var User = require("../models/user");
 router.get('/', (req, res) => {
 
   console.log("Your user data");
-  res.send("Your user data");
+  User.find().then((users) => {
+      console.log("Went to find Users")
+      console.log(users);
+    const usersWithProjects = users.filter(user => {
+        return user.projects.length > 0
+    })
+
+
+    res.render('users/index', {
+        users,
+        usersWithProjects
+    });
+  })
 })
 
 //======================

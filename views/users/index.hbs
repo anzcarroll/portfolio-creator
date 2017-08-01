@@ -1,1 +1,21 @@
-<h1>this is our users index</h1>
+<h1>User Portfolios</h1>
+<div class="row">
+{{#each usersWithProjects}}
+<div class="col s4">
+<br><h4>
+<a href="/{{this.user_name}}">
+{{this.user_name}}
+</a>
+</h4>
+<br>
+<h5><strong>Projects:</strong></h5>
+<ul>
+    {{#each this.projects}}
+    <li>{{this.name}}</li>
+    {{/each}}
+</ul>
+</p>
+</div>
+
+{{/each}}
+</div>
